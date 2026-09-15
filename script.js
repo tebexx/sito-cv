@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 descriptions: {
                     Bora: "Vento freddo e secco da nord-est, tipico dell'Adriatico settentrionale: soffia spesso a raffiche improvvise e violente.",
                     Levante: "Vento umido da est, proveniente dal mare aperto: porta cielo coperto e un'aria più mite e salmastra.",
-                    Ostro: "Vento caldo e umido da sud: spesso annuncia un cambiamento del tempo, con la pioggia in arrivo. L'agente Ostro fa lo stesso con i dati: li legge al posto tuo e ti riporta la risposta già pronta, in numeri e grafici, prima ancora che tu debba andarla a cercare.",
+                    Ostro: "Un vento da sud che abbatte le distanze. Ostro trasforma le parole in codice: interroga i database al posto tuo e restituisce dati e report visivi in pochi secondi. Nessun bisogno di conoscere l'SQL per chi cerca risposte, nessuna coda di richieste per il team IT.",
                     Ponente: "Vento da ovest, generalmente mite e regolare: accompagna spesso giornate serene nelle stagioni intermedie."
                 }
             },
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 descriptions: {
                     Bora: "A cold, dry northeasterly wind typical of the northern Adriatic, often blowing in sudden, violent gusts.",
                     Levante: "A humid easterly wind off the open sea, bringing overcast skies and a milder, salty air.",
-                    Ostro: "A warm, humid southerly wind that often signals a change in the weather, with rain on the way. Ostro the agent does the same with data: it reads it for you and hands back the answer already worked out, in numbers and charts, before you'd even think to look for it.",
+                    Ostro: "A southerly wind that closes distances. Ostro turns words into code: it queries databases for you and returns data and visual reports in seconds. No need to know SQL if you're looking for answers, no more request queues for the IT team.",
                     Ponente: "A generally mild, steady westerly wind, often accompanying clear skies in the shoulder seasons."
                 }
             },
@@ -796,6 +796,39 @@ document.addEventListener('DOMContentLoaded', () => {
             const p = addPolygon(spikePoints(b, MINOR_TIP_R), "owr-spike-minor");
             p.setAttribute("fill", "#28324a");
         });
+
+        // Intercardinal labels (NE/SE/SO/NO) on the 4 decorative minor
+        // spikes — kept in Italian nautical form in both languages, same
+        // convention as the N/E/S/O badges on the main points.
+        const OWR_INTERCARDINAL_LABELS = { 45: "NE", 135: "SE", 225: "SO", 315: "NO" };
+        OWR_MINOR_BEARINGS.forEach(b => {
+            const pos = polar(b, MINOR_TIP_R + 6);
+            const label = document.createElementNS(NS, "text");
+            label.setAttribute("x", pos[0].toFixed(2));
+            label.setAttribute("y", pos[1].toFixed(2));
+            label.setAttribute("text-anchor", "middle");
+            label.setAttribute("dominant-baseline", "middle");
+            label.setAttribute("class", "owr-intercardinal-label");
+            label.textContent = OWR_INTERCARDINAL_LABELS[b] || "";
+            svg.appendChild(label);
+        });
+
+        // Degree tick marks: one every 15°, skipping the 8 bearings that
+        // already have a spike (cardinal + intercardinal), just to fill
+        // the otherwise-empty ring between the spikes and the frame —
+        // purely decorative, like the graduation on a real compass card.
+        for (let b = 0; b < 360; b += 15) {
+            if (b % 45 === 0) continue;
+            const inner = polar(b, 40);
+            const outer = polar(b, 44);
+            const tick = document.createElementNS(NS, "line");
+            tick.setAttribute("x1", inner[0].toFixed(2));
+            tick.setAttribute("y1", inner[1].toFixed(2));
+            tick.setAttribute("x2", outer[0].toFixed(2));
+            tick.setAttribute("y2", outer[1].toFixed(2));
+            tick.setAttribute("class", "owr-tick");
+            svg.appendChild(tick);
+        }
 
         OWR_WINDS.forEach(wind => {
             const cls = "owr-spike-major" + (wind.active ? " owr-spike-active" : "");

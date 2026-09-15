@@ -1142,6 +1142,25 @@ button, input, textarea {
     filter: drop-shadow(0 0 4px rgba(226,232,240,0.6));
 }
 
+/* Degree ticks + intercardinal labels: purely decorative graduation,
+   filling the empty ring between the spikes and the frame like a real
+   compass card. No glow/filter on purpose — that's reserved for the
+   interactive elements (needle, active point, wind icon). */
+.owr-tick {
+    stroke: var(--owr-inactive-text);
+    stroke-width: 0.6;
+    opacity: 0.45;
+}
+
+.owr-intercardinal-label {
+    fill: var(--owr-inactive-text);
+    font-family: var(--font-sans);
+    font-size: 4.2px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    opacity: 0.55;
+}
+
 .owr-point {
     position: absolute;
     display: flex;
