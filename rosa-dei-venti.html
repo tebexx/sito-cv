@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosa dei Venti — Demo componente</title>
+<style>
+  /* ============================================================
+     Pagina di dimostrazione (sfondo scuro, titolo di contesto).
+     Tutto quello che serve al componente vero e proprio è tra i
+     marcatori "COMPONENT START" e "COMPONENT END" più sotto:
+     puoi copiare solo quella porzione di HTML/CSS/JS nel tuo sito.
+     ============================================================ */
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #070b14;
+    color: #cbd5e1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .demo-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px 64px;
+    text-align: center;
+    gap: 8px;
+  }
+  .demo-page h1 {
+    color: #38bdf8;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin: 0 0 4px;
+  }
+  .demo-page p.subtitle {
+    color: #64748b;
+    margin: 0 0 32px;
+    font-size: 0.95rem;
+  }
+
+  /* ============================================================
+     COMPONENT START — rosa dei venti interattiva (4 venti)
+     Scope tutto sotto .owr- per evitare collisioni con lo stile
+     del tuo sito quando la incolli altrove.
+     ============================================================ */
+
+  .owr-wrapper {
+    --owr-accent-a: #2b6ef5;
+    --owr-accent-b: #22d3ee;
+    --owr-inactive: #3a4457;
+    --owr-inactive-text: #64748b;
+    --owr-frame: rgba(56, 189, 248, 0.18);
+    position: relative;
+    width: clamp(300px, 62vw, 560px);
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+  }
+
+  .owr-star-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .owr-frame-ring {
+    position: absolute;
+    inset: 1%;
+    border-radius: 50%;
+    border: 1px dashed var(--owr-frame);
+    pointer-events: none;
+    animation: owr-spin 100s linear infinite;
+  }
+  @keyframes owr-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* Nucleo centrale con onde animate, in stile con il logo Ostro */
+  .owr-core {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 20%;
+    aspect-ratio: 1/1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #0f1a2e, #060a12 70%);
+    box-shadow: 0 0 0 1px rgba(56,189,248,0.25), 0 0 30px rgba(43,110,245,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: owr-pulse 4s ease-in-out infinite;
+    z-index: 3;
+  }
+  .owr-core svg { width: 62%; height: 62%; }
+  .owr-wave {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 6;
+  }
+  .owr-wave--1 { stroke: var(--owr-accent-a); opacity: 0.9; }
+  .owr-wave--2 { stroke: var(--owr-accent-b); opacity: 0.6; transform: translateY(6px); }
+  .owr-wave--1, .owr-wave--2 {
+    stroke-dasharray: 140;
+    stroke-dashoffset: 0;
+    animation: owr-wave-flow 3.2s ease-in-out infinite alternate;
+  }
+  .owr-wave--2 { animation-duration: 3.8s; }
+
+  @keyframes owr-wave-flow {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: 24; }
+  }
+  @keyframes owr-pulse {
+    0%, 100% { box-shadow: 0 0 0 1px rgba(56,189,248,0.25), 0 0 26px rgba(43,110,245,0.3); }
+    50%      { box-shadow: 0 0 0 1px rgba(56,189,248,0.45), 0 0 42px rgba(43,110,245,0.55); }
+  }
+
+  /* Ago di bussola: oscilla lentamente, e punta verso il vento su cui passa il mouse */
+  .owr-needle {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 2px;
+    height: 27%;
+    transform-origin: 50% 100%;
+    transform: translate(-50%, -100%) rotate(0deg);
+    transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+    animation: owr-needle-idle 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .owr-wrapper.is-aiming .owr-needle { animation: none; }
+  .owr-needle::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    width: 0; height: 0;
+    transform: translateX(-50%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 10px solid var(--owr-accent-b);
+    filter: drop-shadow(0 0 4px var(--owr-accent-b));
+  }
+  @keyframes owr-needle-idle {
+    0%, 100% { transform: translate(-50%, -100%) rotate(-4deg); }
+    50%      { transform: translate(-50%, -100%) rotate(4deg); }
+  }
+
+  /* stella della rosa: punte principali (N/E/S/O) e secondarie (decorative) */
+  .owr-spike-major {
+    filter: drop-shadow(0 0 6px rgba(43,110,245,0.25));
+  }
+  .owr-spike-major.owr-spike-active {
+    filter: drop-shadow(0 0 12px rgba(34,211,238,0.65));
+  }
+  .owr-spike-minor { opacity: 0.5; }
+  .owr-north-mark {
+    filter: drop-shadow(0 0 4px rgba(226,232,240,0.6));
+  }
+
+  /* Punti cardinali (Bora, Levante, Ostro, Ponente) */
+  .owr-point {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px;
+    font-family: inherit;
+    opacity: 0;
+    animation: owr-point-in 0.6s ease forwards;
+    z-index: 4;
+  }
+  .owr-point:focus-visible .owr-dot {
+    outline: 2px solid var(--owr-accent-b);
+    outline-offset: 3px;
+  }
+  @keyframes owr-point-in {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+    to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  .owr-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--owr-inactive);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  }
+  .owr-point--active .owr-dot {
+    background: linear-gradient(135deg, var(--owr-accent-a), var(--owr-accent-b));
+    box-shadow: 0 0 14px rgba(34, 211, 238, 0.7);
+    animation: owr-dot-glow 2.4s ease-in-out infinite;
+  }
+  @keyframes owr-dot-glow {
+    0%, 100% { box-shadow: 0 0 10px rgba(34, 211, 238, 0.55); }
+    50%      { box-shadow: 0 0 22px rgba(34, 211, 238, 0.9); }
+  }
+  .owr-point:hover .owr-dot,
+  .owr-point:focus-visible .owr-dot {
+    transform: scale(1.35);
+  }
+  .owr-point--inactive:hover .owr-dot {
+    background: #4b5670;
+  }
+
+  .owr-label {
+    font-size: clamp(0.78rem, 1.8vw, 1rem);
+    font-weight: 600;
+    color: #e2e8f0;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+  }
+  .owr-point--inactive .owr-label { color: var(--owr-inactive-text); }
+  .owr-point--active .owr-label { color: #7dd3fc; }
+  .owr-point--active:hover .owr-label,
+  .owr-point--active:focus-visible .owr-label { color: #fff; }
+
+  .owr-badge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 1px 7px;
+    border-radius: 999px;
+    color: var(--owr-inactive-text);
+    border: 1px solid #2a3345;
+    background: rgba(255,255,255,0.02);
+  }
+  .owr-point--active .owr-badge {
+    color: #0b1220;
+    background: linear-gradient(135deg, var(--owr-accent-a), var(--owr-accent-b));
+    border-color: transparent;
+  }
+
+  /* Raggio luminoso dal centro al punto quando ci passi sopra */
+  .owr-beam {
+    position: absolute;
+    top: 50%; left: 50%;
+    height: 1px;
+    width: 0;
+    transform-origin: 0% 50%;
+    background: linear-gradient(90deg, rgba(56,189,248,0.9), rgba(56,189,248,0));
+    opacity: 0;
+    transition: width 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Tooltip semplice per i punti */
+  .owr-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: #101827;
+    border: 1px solid #263248;
+    color: #cbd5e1;
+    font-size: 0.72rem;
+    padding: 5px 9px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .owr-point:hover .owr-tooltip,
+  .owr-point:focus-visible .owr-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .owr-frame-ring, .owr-core, .owr-needle,
+    .owr-wave--1, .owr-wave--2, .owr-point--active .owr-dot {
+      animation: none !important;
+    }
+  }
+
+  /* ============================================================
+     COMPONENT END
+     ============================================================ */
+</style>
+</head>
+<body>
+
+<div class="demo-page">
+  <h1>Rosa dei Venti</h1>
+  <p class="subtitle">Bora, Levante, Ostro e Ponente. Passa il mouse per orientare l'ago, clicca su un nome attivo per aprire la demo.</p>
+
+  <!-- COMPONENT START -->
+  <div class="owr-wrapper" id="owr-root">
+    <div class="owr-frame-ring"></div>
+    <svg class="owr-star-svg" id="owr-star" viewBox="0 0 100 100"></svg>
+
+    <div class="owr-needle" id="owr-needle"></div>
+
+    <div class="owr-core" aria-hidden="true">
+      <svg viewBox="0 0 100 60">
+        <path class="owr-wave owr-wave--1" d="M0,40 Q15,20 30,40 T60,40 T90,40 T120,40"/>
+        <path class="owr-wave owr-wave--2" d="M0,44 Q15,26 30,44 T60,44 T90,44 T120,44"/>
+      </svg>
+    </div>
+
+    <!-- i punti cardinali vengono generati da JS a partire da OWR_WINDS -->
+  </div>
+  <!-- COMPONENT END -->
+</div>
+
+<script>
+(function () {
+  /* ============================================================
+     CONFIGURAZIONE — modifica solo questo blocco quando aggiungi
+     un nuovo agente:
+       - active: true  -> il punto diventa cliccabile e porta a "url"
+       - active: false -> resta disabilitato, con tooltip "In arrivo"
+       - url: dove portare al click (pagina della demo, ancora, ecc.)
+     bearing è la direzione in gradi standard di bussola (0 = Nord,
+     in senso orario): qui sono fissi i 4 punti cardinali principali.
+     ============================================================ */
+  const OWR_WINDS = [
+    { name: "Bora",     letter: "N", bearing: 0,   active: false, url: null },
+    { name: "Levante",  letter: "E", bearing: 90,  active: false, url: null },
+    { name: "Ostro",    letter: "S", bearing: 180, active: true,  url: "#ostro-demo" }, // <-- sostituisci con l'URL reale della demo di Ostro
+    { name: "Ponente",  letter: "O", bearing: 270, active: false, url: null },
+  ];
+  // Punte decorative secondarie (senza nome), solo per dare alla stella
+  // il classico profilo a 8 punte di una rosa dei venti nautica.
+  const OWR_MINOR_BEARINGS = [45, 135, 225, 315];
+
+  const LABEL_RADIUS = 46;   // dove appoggiare pallino + etichetta, in % dal centro
+  const MAJOR_TIP_R = 43;    // lunghezza delle punte principali della stella
+  const MINOR_TIP_R = 27;    // lunghezza delle punte secondarie della stella
+  const SPIKE_BASE_R = 5;    // quanto sono "larghe" le punte alla base, vicino al centro
+  const SPIKE_HALF_ANGLE = 6.5; // apertura delle punte, in gradi
+
+  const root = document.getElementById("owr-root");
+  const needle = document.getElementById("owr-needle");
+  const svg = document.getElementById("owr-star");
+  const NS = "http://www.w3.org/2000/svg";
+
+  function polar(bearingDeg, radiusPct) {
+    const rad = (bearingDeg - 90) * (Math.PI / 180); // -90 così 0° (Nord) punta in alto
+    return [50 + radiusPct * Math.cos(rad), 50 + radiusPct * Math.sin(rad)];
+  }
+
+  function spikePoints(bearingDeg, tipR) {
+    const tip = polar(bearingDeg, tipR);
+    const left = polar(bearingDeg - SPIKE_HALF_ANGLE, SPIKE_BASE_R);
+    const right = polar(bearingDeg + SPIKE_HALF_ANGLE, SPIKE_BASE_R);
+    return [left, tip, right].map(function (p) { return p[0].toFixed(2) + "," + p[1].toFixed(2); }).join(" ");
+  }
+
+  function addPolygon(points, className) {
+    const el = document.createElementNS(NS, "polygon");
+    el.setAttribute("points", points);
+    el.setAttribute("class", className);
+    svg.appendChild(el);
+    return el;
+  }
+
+  // definizioni gradienti/riempimenti
+  const defs = document.createElementNS(NS, "defs");
+  defs.innerHTML =
+    '<linearGradient id="owrGradActive" x1="0%" y1="0%" x2="100%" y2="100%">' +
+      '<stop offset="0%" stop-color="#2b6ef5"/><stop offset="100%" stop-color="#22d3ee"/>' +
+    '</linearGradient>' +
+    '<linearGradient id="owrGradInactive" x1="0%" y1="0%" x2="100%" y2="100%">' +
+      '<stop offset="0%" stop-color="#28324a"/><stop offset="100%" stop-color="#3a4457"/>' +
+    '</linearGradient>';
+  svg.appendChild(defs);
+
+  // punte secondarie (decorative, dietro a tutto)
+  OWR_MINOR_BEARINGS.forEach(function (b) {
+    const p = addPolygon(spikePoints(b, MINOR_TIP_R), "owr-spike-minor");
+    p.setAttribute("fill", "#28324a");
+  });
+
+  // punte principali (una per vento)
+  OWR_WINDS.forEach(function (wind) {
+    const cls = "owr-spike-major" + (wind.active ? " owr-spike-active" : "");
+    const p = addPolygon(spikePoints(wind.bearing, MAJOR_TIP_R), cls);
+    p.setAttribute("fill", wind.active ? "url(#owrGradActive)" : "url(#owrGradInactive)");
+
+    // piccolo segno distintivo sulla punta a Nord (Bora), come nelle rose dei venti nautiche
+    if (wind.bearing === 0) {
+      const tip = polar(0, MAJOR_TIP_R + 4);
+      const mark = document.createElementNS(NS, "text");
+      mark.setAttribute("x", tip[0]);
+      mark.setAttribute("y", tip[1]);
+      mark.setAttribute("text-anchor", "middle");
+      mark.setAttribute("class", "owr-north-mark");
+      mark.setAttribute("fill", "#e2e8f0");
+      mark.setAttribute("font-size", "6");
+      mark.textContent = "✦";
+      svg.appendChild(mark);
+    }
+  });
+
+  // punti cliccabili (pallino + etichetta + badge) sopra alla stella
+  OWR_WINDS.forEach(function (wind, i) {
+    const [x, y] = polar(wind.bearing, LABEL_RADIUS);
+
+    const beam = document.createElement("div");
+    beam.className = "owr-beam";
+    beam.style.transform = "rotate(" + wind.bearing + "deg)";
+    root.appendChild(beam);
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "owr-point " + (wind.active ? "owr-point--active" : "owr-point--inactive");
+    btn.style.left = x + "%";
+    btn.style.top = y + "%";
+    btn.style.animationDelay = (i * 0.08) + "s";
+    if (!wind.active) btn.setAttribute("aria-disabled", "true");
+    btn.setAttribute("aria-label", wind.name + (wind.active ? " — apri la demo" : " — in arrivo"));
+
+    btn.innerHTML =
+      '<span class="owr-tooltip">' + (wind.active ? "Prova la demo" : "In arrivo") + '</span>' +
+      '<span class="owr-dot"></span>' +
+      '<span class="owr-label">' + wind.name + '</span>' +
+      '<span class="owr-badge">' + wind.letter + '</span>';
+
+    btn.addEventListener("mouseenter", function () {
+      needle.style.transform = "translate(-50%, -100%) rotate(" + wind.bearing + "deg)";
+      root.classList.add("is-aiming");
+      beam.style.width = LABEL_RADIUS + "%";
+      beam.style.opacity = "1";
+    });
+    btn.addEventListener("mouseleave", function () {
+      root.classList.remove("is-aiming");
+      beam.style.width = "0";
+      beam.style.opacity = "0";
+    });
+    btn.addEventListener("focus", function () { btn.dispatchEvent(new Event("mouseenter")); });
+    btn.addEventListener("blur", function () { btn.dispatchEvent(new Event("mouseleave")); });
+
+    btn.addEventListener("click", function () {
+      if (wind.active && wind.url) {
+        window.location.href = wind.url;
+      }
+      // i venti non attivi non fanno nulla al click: restano solo un'anticipazione visiva
+    });
+
+    root.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

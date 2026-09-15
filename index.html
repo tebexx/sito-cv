@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tobia Barbini | Facilitatore di Processi & Interazione</title>
+    <meta name="description" content="Portfolio di Tobia Barbini. Creo soluzioni e mi inserisco tra enti, ambienti e persone diverse per risolvere problemi di relazione, rendendo la comunicazione fluida, naturale ed efficace.">
+    <meta name="author" content="Tobia Barbini">
+    
+    <!-- Google Fonts: Outfit (Display) & Plus Jakarta Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="loader-content">
+            <div class="loader-name">Tobia Barbini</div>
+            <div class="loader-subtitle" data-i18n="loader.subtitle">Ricerca & Design</div>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo" id="nav-logo">
+                TB
+            </a>
+
+            <div class="header-actions">
+                <nav class="nav" id="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="#about" class="nav-link" data-i18n="nav.about">Chi Sono</a></li>
+                        <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Progetti</a></li>
+                        <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contatti</a></li>
+                    </ul>
+                </nav>
+
+                <div class="lang-switch" id="lang-switch">
+                    <button class="lang-btn" data-lang="it" aria-label="Italiano" title="Italiano">
+                        <svg viewBox="0 0 3 2" width="22" height="15" aria-hidden="true">
+                            <rect width="1" height="2" x="0" fill="#009246"></rect>
+                            <rect width="1" height="2" x="1" fill="#F1F2F1"></rect>
+                            <rect width="1" height="2" x="2" fill="#CE2B37"></rect>
+                        </svg>
+                    </button>
+                    <button class="lang-btn" data-lang="en" aria-label="English" title="English">
+                        <svg viewBox="0 0 60 36" width="22" height="15" aria-hidden="true">
+                            <rect width="60" height="36" fill="#012169"></rect>
+                            <line x1="0" y1="0" x2="60" y2="36" stroke="#FFFFFF" stroke-width="7"></line>
+                            <line x1="60" y1="0" x2="0" y2="36" stroke="#FFFFFF" stroke-width="7"></line>
+                            <line x1="0" y1="0" x2="60" y2="36" stroke="#C8102E" stroke-width="3"></line>
+                            <line x1="60" y1="0" x2="0" y2="36" stroke="#C8102E" stroke-width="3"></line>
+                            <rect x="24" width="12" height="36" fill="#FFFFFF"></rect>
+                            <rect y="12" width="60" height="12" fill="#FFFFFF"></rect>
+                            <rect x="27" width="6" height="36" fill="#C8102E"></rect>
+                            <rect y="15" width="60" height="6" fill="#C8102E"></rect>
+                        </svg>
+                    </button>
+                </div>
+
+                <button class="nav-toggle" aria-label="Apri menu" id="nav-toggle" data-i18n-aria="nav.openMenu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-glow" id="hero-glow" aria-hidden="true"></div>
+            <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+            <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-tagline reveal-item">Tobia Barbini &mdash; System & Interaction Facilitator</span>
+                    <h1 class="hero-title reveal-item" data-i18n="hero.title">
+                        Costruisco <span class="text-light">ponti fluidi</span> tra enti, contesti e <span class="text-light">persone</span>.
+                    </h1>
+                    <p class="hero-description reveal-item" data-i18n="hero.description">
+                        Progetto soluzioni capaci di posizionarsi al centro tra realtà diverse. Trasformo relazioni rigide, macchinose o frammentate in flussi di comunicazione naturali e collaborativi, superando le barriere tra mondi apparentemente distanti.
+                    </p>
+                    <div class="hero-cta reveal-item">
+                        <a href="#projects" class="btn btn-primary" data-i18n="hero.ctaPrimary">Vedi il Progetto</a>
+                        <a href="#about" class="btn btn-secondary" data-i18n="hero.ctaSecondary">Scopri di più</a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-down-btn" aria-label="Scorri giù" data-i18n-aria="hero.scrollDown">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n="about.sectionTitle">Chi Sono</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="about-text reveal-item">
+                    <h3 data-i18n="about.philosophyTitle">Filosofia e Approccio</h3>
+                    <p data-i18n="about.p1">
+                        Oggi il principale collo di bottiglia non è la mancanza di innovazione, ma la crescente frammentazione tra le tecnologie, le persone ed i contesti esistenti. Nella corsa continua verso nuove possibilità, si tende a rincorrere l'ultimo strumento a scapito della retrocompatibilità e della continuità dei rapporti. Il risultato è la proliferazione di ambienti e sistemi isolati che faticano a dialogare tra loro.
+                    </p>
+                    <p data-i18n="about.p2">
+                        La mia filosofia nasce proprio qui: interpormi in questo spazio d'ombra per costruire ponti fluidi e retrocompatibili tra enti, ambienti e persone diverse. Che si tratti di connettere un'architettura di dati a utenti non tecnici o di armonizzare flussi relazionali complessi, il mio obiettivo è risolvere i problemi di comunicazione alla radice, integrando l'innovazione senza distruggere ciò che già funziona.
+                    </p>
+                    <p data-i18n="about.p3">
+                        A livello personale, sono animato da un approccio dinamico e da una forte spinta intraprendente: cogliendo le opportunità al volo, non ho timore di uscire dalla mia zona di comfort per mettermi in gioco in contesti sempre nuovi. Considero la versatilità un punto di forza ed affronto le sfide con prontezza e spirito d'iniziativa.
+                    </p>
+                    <p data-i18n="about.p4">
+                        Unisco competenze scientifiche nell'architettura dei dati (AI, NLP, RAG) a una spiccata sensibilità organizzativa ed empatica, maturata nella gestione dei flussi in tempo reale. Per me la tecnologia e il design non sono il fine ultimo, ma il mezzo con cui restituisco continuità, trasparenza e armonia alle relazioni.
+                    </p>
+                </div>
+
+                <!-- Esperienza, Formazione (con Lingue Parlate annidate) -->
+                <div class="experience-panel">
+
+                        <!-- Esperienza Sezione -->
+                        <div class="journey-section">
+                            <h3>
+                                <button class="journey-toggle" type="button" aria-expanded="false">
+                                    <span data-i18n="journey.experienceTitle">Esperienza Lavorativa</span>
+                                    <svg class="journey-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </h3>
+                            <div class="journey-collapse">
+                            <div class="journey-collapse-inner">
+                            <div class="journey-list">
+                                <!-- Journey Item 1 -->
+                                <div class="journey-item reveal-item">
+                                    <div class="journey-year">2026</div>
+                                    <div class="journey-details">
+                                        <h4 data-i18n="journey.item1.title">Sviluppatore Python</h4>
+                                        <p class="journey-org">Comune di Venezia - Centro Previsioni Maree</p>
+                                        <p class="journey-desc" data-i18n="journey.item1.desc">Estrazione in tempo reale di dati meteomarini acquisiti da stazioni lagunari per modelli di previsione statistici della marea, considerando le interferenze del sistema MOSE. Gestione e segnalazione allerte meteo lungo la costa regionale.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Journey Item 2 -->
+                                <div class="journey-item reveal-item">
+                                    <div class="journey-year">2024 - 2025</div>
+                                    <div class="journey-details">
+                                        <h4>Chef de Rang / Commis de Rang</h4>
+                                        <p class="journey-org">Strazzaria (Venezia) & Paradiso / Badrutt's Palace (St. Moritz, CH)</p>
+                                        <p class="journey-desc" data-i18n="journey.item2.desc">Gestione della sala, coordinamento dei runner e del flusso piatti dalla cucina (gestione del pass) in contesti ad alto profilo. Formazione del personale e cura dettagliata del servizio clienti.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Journey Item 3 -->
+                                <div class="journey-item reveal-item">
+                                    <div class="journey-year">2024</div>
+                                    <div class="journey-details">
+                                        <h4>IT Internship (AI & NLP)</h4>
+                                        <p class="journey-org">Zucchetti S.p.A. - Padova</p>
+                                        <p class="journey-desc" data-i18n="journey.item3.desc">Ricerca e sperimentazione su modelli di embedding per la ricerca semantica, analisi comparativa di modelli e studio di tecniche avanzate di Natural Language Processing (NLP).</p>
+                                    </div>
+                                </div>
+
+                                <!-- Journey Item 4 -->
+                                <div class="journey-item reveal-item">
+                                    <div class="journey-year">2022</div>
+                                    <div class="journey-details">
+                                        <h4>Frontend Developer</h4>
+                                        <p class="journey-org">Cocai Express - Venezia</p>
+                                        <p class="journey-desc" data-i18n="journey.item4.desc">Sviluppo in React Native per l'applicazione mobile di delivery (gestione flussi clienti e corrieri), curando la manutenzione del codice e l'ottimizzazione dell'esperienza utente.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Journey Item 5 -->
+                                <div class="journey-item reveal-item">
+                                    <div class="journey-year">2021 - 2024</div>
+                                    <div class="journey-details">
+                                        <h4 data-i18n="journey.item5.title">Cameriere / Barista</h4>
+                                        <p class="journey-org">Rosa Salva, Enoteca al Volto, Osteria Marcianino - Venezia</p>
+                                        <p class="journey-desc" data-i18n="journey.item5.desc">Servizio autonomo e gestione di eventi formali e di alto profilo nel centro storico di Venezia. Collaborazione alla logistica e gestione delle materie prime.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- Formazione Sezione -->
+                        <div class="journey-section">
+                            <h3>
+                                <button class="journey-toggle" type="button" aria-expanded="false">
+                                    <span data-i18n="journey.educationTitle">Formazione & Certificazioni</span>
+                                    <svg class="journey-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </h3>
+                            <div class="journey-collapse">
+                            <div class="journey-collapse-inner">
+                            <div class="journey-list">
+                                <!-- Journey Item 6 -->
+                                <div class="journey-item reveal-item">
+                                    <div class="journey-year">2025</div>
+                                    <div class="journey-details">
+                                        <h4 data-i18n="journey.item6.title">Laurea Triennale in Informatica</h4>
+                                        <p class="journey-org">Università Ca' Foscari di Venezia</p>
+                                        <p class="journey-desc" data-i18n="journey.item6.desc">Percorso focalizzato su intelligenza artificiale, architettura dei dati ed interazione. Tesi di laurea sperimentale sulla comparazione e analisi di diversi modelli di embedding in un contesto di similarità semantica.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Journey Item 7 -->
+                                <div class="journey-item reveal-item">
+                                    <div class="journey-year">2020</div>
+                                    <div class="journey-details">
+                                        <h4 data-i18n="journey.item7.title">Diploma ESABAC Italo-Francese</h4>
+                                        <p class="journey-org">Liceo Linguistico N. Tommaseo - Venezia</p>
+                                        <p class="journey-desc" data-i18n="journey.item7.desc">Diploma binazionale che certifica una formazione linguistica e letteraria approfondita in italiano e francese.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Journey Item 8 (Certifications) -->
+                                <div class="journey-item reveal-item">
+                                    <div class="journey-year" data-i18n="journey.item8.year">Certificazioni</div>
+                                    <div class="journey-details">
+                                        <h4 data-i18n="journey.item8.title">Certificazioni di Competenze</h4>
+                                        <p class="journey-org">Inglese B2 / ECDL</p>
+                                        <p class="journey-desc" data-i18n="journey.item8.desc">Certificazione della competenza linguistica in lingua inglese e Patente Europea del Computer (European Computer Driving Licence).</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Lingue Parlate: nested inside Formazione & Certificazioni -->
+                            <div class="journey-languages">
+                                <h4 data-i18n="journey.languagesTitle">Lingue Parlate</h4>
+                                <div class="languages-list">
+                                    <span class="lang-tag reveal-item" data-i18n="journey.langIt">Italiano (Madrelingua)</span>
+                                    <span class="lang-tag reveal-item" data-i18n="journey.langEn">Inglese (C1)</span>
+                                    <span class="lang-tag reveal-item" data-i18n="journey.langFr">Francese (B1)</span>
+                                    <span class="lang-tag reveal-item" data-i18n="journey.langEs">Spagnolo (A2)</span>
+                                    <span class="lang-tag reveal-item" data-i18n="journey.langDe">Tedesco (A2)</span>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <!-- Focus Areas: one card visible at a time, swapped via a sliding
+                     transition instead of a static grid. -->
+                <div class="focus-section">
+                    <h3 class="focus-title reveal-item" data-i18n="focus.sectionTitle">Ambiti di Competenza</h3>
+                    <div class="focus-carousel reveal-item">
+                        <button class="focus-nav focus-nav-prev" type="button" id="focus-prev" aria-label="Precedente" data-i18n-aria="focus.prev">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="focus-viewport">
+                            <div class="focus-track" id="focus-track">
+                                <div class="focus-card focus-card--front">
+                                    <div class="focus-num">01</div>
+                                    <h4 data-i18n="focus.card1.title">Facilitazione tra Enti</h4>
+                                    <p data-i18n="focus.card1.desc">L'ho capito lavorando tanto sui dati meteomarini del MOSE quanto in sala in un ristorante di alto livello: il problema non è mai la tecnologia o le persone in sé, ma la distanza tra chi parla linguaggi diversi. Il mio compito è colmarla.</p>
+                                </div>
+
+                                <div class="focus-card focus-card--right">
+                                    <div class="focus-num">02</div>
+                                    <h4 data-i18n="focus.card2.title">Fluidità delle Relazioni</h4>
+                                    <p data-i18n="focus.card2.desc">Ho visto troppi processi rigidi rompersi proprio nel momento in cui contano di più, che fosse un'automazione o un servizio a un tavolo pieno. Preferisco costruire flussi che si adattano alle persone, non il contrario.</p>
+                                </div>
+
+                                <div class="focus-card focus-card--back">
+                                    <div class="focus-num">03</div>
+                                    <h4 data-i18n="focus.card3.title">Abbattimento Barriere</h4>
+                                    <p data-i18n="focus.card3.desc">Un modello che non capisce una domanda, un dato che non dialoga con un altro sistema, un cliente che non si sente ascoltato: per me sono la stessa incomunicabilità travestita diversamente. La affronto ovunque la trovi.</p>
+                                </div>
+
+                                <div class="focus-card focus-card--left">
+                                    <div class="focus-num">04</div>
+                                    <h4 data-i18n="focus.card4.title">Coordinamento & Empatia</h4>
+                                    <p data-i18n="focus.card4.desc">Anni passati a coordinare sale e cucine nei momenti di massima pressione mi hanno insegnato a leggere le persone in tempo reale. È la stessa lucidità che porto quando gestisco un progetto o una relazione complicata.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="focus-nav focus-nav-next" type="button" id="focus-next" aria-label="Successivo" data-i18n-aria="focus.next">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="focus-dots" id="focus-dots">
+                        <button class="focus-dot active" type="button" aria-label="1"></button>
+                        <button class="focus-dot" type="button" aria-label="2"></button>
+                        <button class="focus-dot" type="button" aria-label="3"></button>
+                        <button class="focus-dot" type="button" aria-label="4"></button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section section" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n="projects.sectionTitle">Progetti Personali</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <!-- Single Featured Project Showcase: an interactive "rosa dei venti"
+                     (wind rose) — each cardinal point is a project slot. Only Ostro
+                     is active for now; clicking it opens a short info banner, which
+                     for Ostro also links to the full specs modal below (see
+                     script.js, section 5 & 5b). -->
+                <div class="featured-project reveal-item">
+                    <h3 class="windrose-name" data-i18n="projects.windroseName">Rosa dei Venti</h3>
+                    <p class="windrose-desc" data-i18n="projects.windroseDesc">
+                        Un selettore di progetti a forma di bussola nautica: ogni punto cardinale è un'iniziativa personale. Passa il mouse per orientare l'ago, clicca un vento per scoprirlo.
+                    </p>
+                    <div class="owr-wrapper" id="owr-root">
+                        <div class="owr-frame-ring"></div>
+                        <svg class="owr-star-svg" id="owr-star" viewBox="0 0 100 100"></svg>
+
+                        <div class="owr-needle" id="owr-needle"></div>
+
+                        <div class="owr-core" aria-hidden="true">
+                            <svg viewBox="0 0 100 60">
+                                <path class="owr-wave owr-wave--1" d="M0,40 Q15,20 30,40 T60,40 T90,40 T120,40"/>
+                                <path class="owr-wave owr-wave--2" d="M0,44 Q15,26 30,44 T60,44 T90,44 T120,44"/>
+                            </svg>
+                        </div>
+
+                        <!-- i punti cardinali vengono generati da JS a partire da OWR_WINDS -->
+
+                        <!-- Wind info banner: floats next to whichever point was
+                             clicked, positioned by JS (see buildWindRose) -->
+                        <div class="owr-info-banner" id="owr-info-banner">
+                            <button class="owr-info-close" id="owr-info-close" aria-label="Chiudi" data-i18n-aria="windrose.closeBanner">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+                            <span class="owr-info-badge" id="owr-info-badge"></span>
+                            <h4 class="owr-info-title" id="owr-info-title"></h4>
+                            <p class="owr-info-desc" id="owr-info-desc"></p>
+                            <p class="owr-info-note" id="owr-info-note"></p>
+                            <button class="btn btn-primary owr-info-cta" id="owr-info-cta"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section section" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n="contact.sectionTitle">Contatti</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="contact-simple reveal-item">
+                    <p class="contact-lead" data-i18n="contact.lead">
+                        Se hai in mente un progetto, una collaborazione o semplicemente vuoi farmi delle domande sul mio percorso, puoi scrivermi direttamente. Sono basato a Venezia.
+                    </p>
+                    <div class="contact-buttons">
+                        <a href="mailto:tobia.barbini@gmail.com" class="btn btn-primary" data-i18n="contact.emailBtn">Invia una Mail</a>
+                        <a href="https://www.linkedin.com/in/tobia-barbini-51a0702b9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+                        <a href="https://instagram.com/tobiabarbini" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p class="copyright">&copy; <span id="year">2026</span> Tobia Barbini. <span data-i18n="footer.rights">Tutti i diritti riservati.</span></p>
+            <div class="footer-links">
+                <a href="#hero" data-i18n="footer.backToTop">Torna all'inizio</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="modal" aria-hidden="true" role="dialog">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-wrapper">
+            <div class="modal-container">
+                <button class="modal-close" aria-label="Chiudi" id="modal-close" data-i18n-aria="modal.close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="modal-content" id="modal-content-details">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screenshot Lightbox: opens a demo screenshot at full screen -->
+    <div id="image-lightbox" class="lightbox" aria-hidden="true">
+        <div class="lightbox-overlay" id="lightbox-overlay"></div>
+        <button class="lightbox-close" id="lightbox-close" aria-label="Chiudi" data-i18n-aria="modal.close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
