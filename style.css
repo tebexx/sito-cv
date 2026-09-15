@@ -1059,24 +1059,43 @@ button, input, textarea {
     animation: owr-pulse 4s ease-in-out infinite;
     z-index: 3;
 }
-.owr-core svg { width: 62%; height: 62%; }
-.owr-wave {
-    fill: none;
-    stroke-linecap: round;
-    stroke-width: 6;
-}
-.owr-wave--1 { stroke: var(--owr-accent-a); opacity: 0.9; }
-.owr-wave--2 { stroke: var(--owr-accent-b); opacity: 0.6; transform: translateY(6px); }
-.owr-wave--1, .owr-wave--2 {
-    stroke-dasharray: 140;
-    stroke-dashoffset: 0;
-    animation: owr-wave-flow 3.2s ease-in-out infinite alternate;
-}
-.owr-wave--2 { animation-duration: 3.8s; }
+/* overflow: visible because the wind-line paths sit close to the icon's
+   own viewBox edges — with the default clip, the drift animation below
+   sliced them off sharply at that boundary. The circular .owr-core (with
+   its own overflow: hidden) is the real clip edge, and there's plenty of
+   margin between the icon and that circle for the drift to bleed into. */
+.owr-core svg { width: 62%; height: 62%; overflow: visible; }
 
-@keyframes owr-wave-flow {
-    from { stroke-dashoffset: 0; }
-    to { stroke-dashoffset: 24; }
+/* Wind Flow icon at the core: 3 gust lines drifting left-right on a loop,
+   staggered so they read as one current of wind rather than 3 things
+   moving in sync. Speeds up while the compass is being aimed
+   (.owr-wrapper.is-aiming, set on hover/cursor-tracking — see script.js),
+   and the core's own glow (below) intensifies with it, so the whole thing
+   feels like it's responding to you.
+   Note: no CSS `filter` here on purpose — a drop-shadow on an SVG shape
+   forces the browser to composite it in its own rectangular layer, which
+   showed up as a faint square edge against the circular core. */
+.owr-wind-line {
+    animation: owr-wind-blow 3s ease-in-out infinite;
+}
+.owr-wind-line--top { animation-delay: 0s; }
+.owr-wind-line--mid { animation-delay: 0.25s; animation-duration: 2.6s; }
+.owr-wind-line--bottom { animation-delay: 0.5s; }
+
+.owr-wrapper.is-aiming .owr-wind-line {
+    animation-duration: 1.1s;
+}
+.owr-wrapper.is-aiming .owr-wind-line--mid {
+    animation-duration: 0.95s;
+}
+
+.owr-wrapper.is-aiming .owr-core {
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.55), 0 0 46px rgba(43, 110, 245, 0.65);
+}
+
+@keyframes owr-wind-blow {
+    0%, 100% { transform: translateX(-0.5px); opacity: 0.55; }
+    50%      { transform: translateX(0.7px); opacity: 1; }
 }
 @keyframes owr-pulse {
     0%, 100% { box-shadow: 0 0 0 1px rgba(56,189,248,0.25), 0 0 26px rgba(43,110,245,0.3); }
@@ -1354,7 +1373,7 @@ button, input, textarea {
 
 @media (prefers-reduced-motion: reduce) {
     .owr-frame-ring, .owr-core, .owr-needle,
-    .owr-wave--1, .owr-wave--2, .owr-point--active .owr-dot {
+    .owr-wind-line, .owr-point--active .owr-dot {
         animation: none !important;
     }
 }

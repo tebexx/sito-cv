@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 descriptions: {
                     Bora: "Vento freddo e secco da nord-est, tipico dell'Adriatico settentrionale: soffia spesso a raffiche improvvise e violente.",
                     Levante: "Vento umido da est, proveniente dal mare aperto: porta cielo coperto e un'aria più mite e salmastra.",
-                    Ostro: "Vento caldo e umido da sud: spesso annuncia un cambiamento del tempo, con la pioggia in arrivo. Un'immagine che calza a pennello con questo progetto — un agente che legge i dati e anticipa qualcosa, restituendoti un'informazione prima ancora che tu debba andarla a cercare.",
+                    Ostro: "Vento caldo e umido da sud: spesso annuncia un cambiamento del tempo, con la pioggia in arrivo. L'agente Ostro fa lo stesso con i dati: li legge al posto tuo e ti riporta la risposta già pronta, in numeri e grafici, prima ancora che tu debba andarla a cercare.",
                     Ponente: "Vento da ovest, generalmente mite e regolare: accompagna spesso giornate serene nelle stagioni intermedie."
                 }
             },
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 descriptions: {
                     Bora: "A cold, dry northeasterly wind typical of the northern Adriatic, often blowing in sudden, violent gusts.",
                     Levante: "A humid easterly wind off the open sea, bringing overcast skies and a milder, salty air.",
-                    Ostro: "A warm, humid southerly wind that often signals a change in the weather, with rain on the way. A fitting image for this project too — an agent that reads the data and gets ahead of it, handing you an answer before you'd even think to look for it.",
+                    Ostro: "A warm, humid southerly wind that often signals a change in the weather, with rain on the way. Ostro the agent does the same with data: it reads it for you and hands back the answer already worked out, in numbers and charts, before you'd even think to look for it.",
                     Ponente: "A generally mild, steady westerly wind, often accompanying clear skies in the shoulder seasons."
                 }
             },
@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ostro: {
                 title: "Ostro",
                 category: "Progetto Personale",
-                tagline: "“Un ponte tra il linguaggio umano ed ecosistemi di dati complessi”",
+                tagline: "“Il vento che porta le tue domande fino in fondo ai dati, e torna con la risposta.”",
                 sections: [
                     {
                         title: "Contesto — Il Primo di Molti Ponti",
@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ostro: {
                 title: "Ostro",
                 category: "Personal Project",
-                tagline: "“A bridge between human language and complex data ecosystems”",
+                tagline: "“The wind that carries your questions all the way to the data, and comes back with the answer.”",
                 sections: [
                     {
                         title: "Context — The First of Many Bridges",
@@ -871,17 +871,17 @@ document.addEventListener('DOMContentLoaded', () => {
             owrPointButtons.push({ wind, btn, tooltipEl });
         });
 
-        // Let the needle track the cursor continuously, anywhere over the
-        // compass — not just when hovering one of the 4 fixed points —
-        // so it reads as actually following the mouse. rAF-throttled since
-        // mousemove can fire far more often than the screen refreshes.
-        // Skipped under reduced-motion, where the needle only moves for
-        // the discrete point-hover/focus interactions above.
+        // Let the needle track the cursor continuously, anywhere on the
+        // page — not just over the compass itself — so it reads as truly
+        // following the mouse rather than only reacting when hovering it.
+        // rAF-throttled since mousemove can fire far more often than the
+        // screen refreshes. Skipped under reduced-motion, where the needle
+        // only moves for the discrete point-hover/focus interactions above.
         if (!prefersReducedMotion) {
             let trackingRaf = null;
             let lastClientX = 0;
             let lastClientY = 0;
-            root.addEventListener("mousemove", e => {
+            window.addEventListener("mousemove", e => {
                 // Always keep the latest pointer position, but only ever
                 // schedule one pending frame — otherwise a queued frame
                 // would apply whichever position happened to trigger it,
@@ -899,7 +899,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     root.classList.add("is-aiming");
                 });
             });
-            root.addEventListener("mouseleave", () => {
+            // Only fall back to idle drift once the cursor actually leaves
+            // the browser window (not just the compass itself).
+            document.documentElement.addEventListener("mouseleave", () => {
                 root.classList.remove("is-aiming");
             });
         }
