@@ -820,112 +820,27 @@ button, input, textarea {
     letter-spacing: -0.01em;
 }
 
-/* A 3D "wheel": 4 cards, 4 fixed slots (front / right / back / left) placed
-   in 3D space with perspective. Each card is assigned to a slot by its
-   distance from the active index — script.js just recomputes, on every
-   click, which of the 4 slot classes each card should have; the actual
-   animation is nothing more than the transform/opacity transition below
-   firing because the class (and so the computed transform) changed. Moving
-   "next" advances every card exactly one slot around the wheel (front→left,
-   right→front, back→right, left→back), which is what makes it read as one
-   wheel turning rather than a simple swap. No overflow:hidden here on
-   purpose — the whole point is that the side/back cards stay visible,
-   rotated away in the distance. */
-.focus-carousel {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+/* Static grid: one card per area, no carousel mechanics. */
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
 }
 
-.focus-viewport {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    perspective: 1750px;
-}
-
-.focus-track {
-    position: relative;
-    width: 290px;
-    height: 490px;
-    transform-style: preserve-3d;
-}
-
-.focus-nav {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text-muted);
-    cursor: pointer;
-    transition: var(--transition-fast);
-}
-
-.focus-nav:hover {
-    color: var(--color-text);
-    border-color: var(--color-border-hover);
-}
-
-.focus-nav svg {
-    width: 18px;
-    height: 18px;
-}
-
-/* Portrait card: taller than wide, on purpose. */
 .focus-card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 290px;
-    height: 490px;
-    box-sizing: border-box;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: 38px 30px;
+    padding: 32px 28px;
     background: var(--color-surface);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    backface-visibility: hidden;
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
 }
 
-.focus-card--front {
-    transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
-    opacity: 1;
-    z-index: 4;
-    pointer-events: auto;
-}
-
-.focus-card--front:hover {
+.focus-card:hover {
+    transform: translateY(-4px);
     border-color: var(--color-border-hover);
-}
-
-.focus-card--right {
-    transform: translate3d(190px, 0, -200px) rotateY(-48deg) scale(0.8);
-    opacity: 0.4;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.focus-card--left {
-    transform: translate3d(-190px, 0, -200px) rotateY(48deg) scale(0.8);
-    opacity: 0.4;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.focus-card--back {
-    transform: translate3d(0, 0, -350px) rotateY(180deg) scale(0.65);
-    opacity: 0.12;
-    z-index: 1;
-    pointer-events: none;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
 }
 
 .focus-num {
@@ -933,45 +848,74 @@ button, input, textarea {
     font-size: 1.7rem;
     font-weight: 300;
     color: var(--color-text-muted);
-    margin-bottom: 22px;
+    margin-bottom: 18px;
     opacity: 0.5;
 }
 
 .focus-card h4 {
     font-family: var(--font-sans);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 500;
     margin-bottom: 12px;
 }
 
 .focus-card p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--color-text-muted);
     font-weight: 300;
     line-height: 1.6;
 }
 
-.focus-dots {
+/* --- Technical Skills --- */
+.skills-section {
+    padding-top: 60px;
+    margin-top: 60px;
+    border-top: 1px solid var(--color-border);
+}
+
+.skills-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+}
+
+.skills-groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.skills-group h4 {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+}
+
+.skills-tags {
     display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 24px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.focus-dot {
-    width: 8px;
-    height: 8px;
-    padding: 0;
-    border: none;
-    border-radius: 50%;
-    background: var(--color-border-hover);
-    cursor: pointer;
-    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.skills-tags span {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 6px 14px;
+    transition: var(--transition-fast);
 }
 
-.focus-dot.active {
-    background: var(--color-text);
-    transform: scale(1.3);
+.skills-tags span:hover {
+    color: var(--color-text);
+    border-color: var(--color-border-hover);
 }
 
 /* --- Projects Section --- */
@@ -2038,37 +1982,17 @@ button, input, textarea {
         grid-template-columns: 1fr;
     }
     
-    .focus-carousel {
-        gap: 10px;
-    }
-
-    .focus-nav {
-        width: 34px;
-        height: 34px;
-    }
-
-    /* Smaller wheel, and the side/back cards pull in closer with less
-       rotation so they don't spill into the nav buttons on a narrow screen. */
-    .focus-track,
-    .focus-card {
-        width: 220px;
-        height: 385px;
+    .focus-grid {
+        grid-template-columns: 1fr;
     }
 
     .focus-card {
         padding: 28px 22px;
     }
 
-    .focus-card--right {
-        transform: translate3d(105px, 0, -125px) rotateY(-42deg) scale(0.78);
-    }
-
-    .focus-card--left {
-        transform: translate3d(-105px, 0, -125px) rotateY(42deg) scale(0.78);
-    }
-
-    .focus-card--back {
-        transform: translate3d(0, 0, -230px) rotateY(180deg) scale(0.6);
+    .skills-groups {
+        grid-template-columns: 1fr;
+        gap: 28px;
     }
 
     .journey-item {
@@ -2131,7 +2055,6 @@ button, input, textarea {
     .modal-wrapper,
     .project-card,
     .focus-card,
-    .focus-dot,
     .btn,
     .logo,
     .spec-card,

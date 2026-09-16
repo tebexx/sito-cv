@@ -41,12 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             focus: {
                 sectionTitle: "Ambiti di Competenza",
-                prev: "Precedente",
-                next: "Successivo",
-                card1: { title: "Facilitazione tra Enti", desc: "L'ho capito lavorando tanto sui dati meteomarini del MOSE quanto in sala in un ristorante di alto livello: il problema non è mai la tecnologia o le persone in sé, ma la distanza tra chi parla linguaggi diversi. Il mio compito è colmarla." },
-                card2: { title: "Fluidità delle Relazioni", desc: "Ho visto troppi processi rigidi rompersi proprio nel momento in cui contano di più, che fosse un'automazione o un servizio a un tavolo pieno. Preferisco costruire flussi che si adattano alle persone, non il contrario." },
-                card3: { title: "Abbattimento Barriere", desc: "Un modello che non capisce una domanda, un dato che non dialoga con un altro sistema, un cliente che non si sente ascoltato: per me sono la stessa incomunicabilità travestita diversamente. La affronto ovunque la trovi." },
-                card4: { title: "Coordinamento & Empatia", desc: "Anni passati a coordinare sale e cucine nei momenti di massima pressione mi hanno insegnato a leggere le persone in tempo reale. È la stessa lucidità che porto quando gestisco un progetto o una relazione complicata." }
+                card1: { title: "Facilitazione tra Enti", desc: "L'ho capito mettendo le mani su realtà molto diverse: dai dati meteomarini della Laguna di Venezia alle diverse realtà della ristorazione in cui mi sono confrontato." },
+                card2: { title: "Fluidità delle Relazioni", desc: "Non credo nei processi che chiedono alle persone di adattarsi alla tecnologia. Credo in sistemi capaci di ascoltare, adattarsi e cambiare insieme a chi li utilizza." },
+                card3: { title: "Abbattimento Barriere", desc: "Un modello che non comprende una richiesta, un dato che non riesce a dialogare con un altro sistema, una persona che non si sente ascoltata: problemi diversi, ma alla base c'è sempre una barriera. Mi interessa trovare il modo di superarla." },
+                card4: { title: "Coordinamento & Empatia", desc: "Ho imparato a leggere situazioni e persone in tempo reale, soprattutto quando la pressione aumenta e le decisioni devono essere rapide. È una capacità che porto nel modo in cui affronto progetti, collaborazioni e problemi complessi." }
+            },
+            skills: {
+                sectionTitle: "Competenze Tecniche",
+                group1: { title: "Linguaggi & Framework" },
+                group2: { title: "AI & Architettura Dati" },
+                group3: { title: "Strumenti" }
             },
             projects: {
                 sectionTitle: "Progetti Personali",
@@ -68,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             contact: {
                 sectionTitle: "Contatti",
-                lead: "Se hai in mente un progetto, una collaborazione o semplicemente vuoi farmi delle domande sul mio percorso, puoi scrivermi direttamente. Sono basato a Venezia.",
+                lead: "Se hai in mente un progetto, una collaborazione, o vuoi solo scambiare due parole sul mio percorso, scrivimi pure: mi fa sempre piacere. Per ora sono a Venezia, ma il vento sta già girando verso nuovi lidi.",
                 emailBtn: "Invia una Mail"
             },
             footer: {
@@ -150,12 +154,16 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             focus: {
                 sectionTitle: "Areas of Expertise",
-                prev: "Previous",
-                next: "Next",
-                card1: { title: "Facilitation Between Organizations", desc: "I learned this working on MOSE's tide-forecast data as much as I did running the floor at a high-end restaurant: the problem is never the technology or the people themselves, but the distance between those speaking different languages. My job is closing that gap." },
-                card2: { title: "Fluidity of Relationships", desc: "I've seen too many rigid processes break exactly when it mattered most, whether it was an automation or table service on a packed night. I'd rather build flows that adapt to people, not the other way around." },
-                card3: { title: "Breaking Down Barriers", desc: "A model that doesn't understand a question, data that won't talk to another system, a customer who doesn't feel heard: to me these are the same breakdown in communication wearing different disguises. I tackle it wherever I find it." },
-                card4: { title: "Coordination & Empathy", desc: "Years spent coordinating dining rooms and kitchens under real pressure taught me to read people in real time. It's the same clarity I bring to managing a project or a complicated relationship." }
+                card1: { title: "Facilitation Between Organizations", desc: "I learned this hands-on, across very different realities: from the meteo-marine data of the Venice Lagoon to the many faces of the restaurant world I've navigated." },
+                card2: { title: "Fluidity of Relationships", desc: "I don't believe in processes that ask people to adapt to technology. I believe in systems that can listen, adapt and change alongside the people who use them." },
+                card3: { title: "Breaking Down Barriers", desc: "A model that doesn't understand a request, data that can't talk to another system, a person who doesn't feel heard: different problems, but underneath there's always a barrier. I'm interested in finding a way past it." },
+                card4: { title: "Coordination & Empathy", desc: "I've learned to read situations and people in real time, especially when pressure rises and decisions have to be quick. It's a skill I carry into how I approach projects, collaborations and complex problems." }
+            },
+            skills: {
+                sectionTitle: "Technical Skills",
+                group1: { title: "Languages & Frameworks" },
+                group2: { title: "AI & Data Architecture" },
+                group3: { title: "Tools" }
             },
             projects: {
                 sectionTitle: "Personal Projects",
@@ -164,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             windrose: {
                 tooltip: "Learn more",
-                ariaSuffix: " — learn more",
+                ariaSuffix: ", learn more",
                 closeBanner: "Close",
                 viewProject: "Discover the project",
                 comingSoonNote: "This wind will get its own project soon too.",
@@ -177,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             contact: {
                 sectionTitle: "Contact",
-                lead: "If you have a project or collaboration in mind, or simply want to ask about my background, feel free to write to me directly. I'm based in Venice.",
+                lead: "If you have a project or collaboration in mind, or just want to chat about my background, drop me a line. I'd genuinely love to hear from you. I'm in Venice for now, but the wind is already turning toward new shores.",
                 emailBtn: "Send an Email"
             },
             footer: {
@@ -192,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 skillsLabel: "Skills Applied",
                 viewDemo: "View the Demo",
                 backToSpecs: "Back to Specs",
-                demoHeading: "Demo — Screenshots",
+                demoHeading: "Demo: Screenshots",
                 demoAlt: "Ostro demo screenshot",
                 flipHint: "Click to read",
                 enlarge: "Enlarge"
@@ -389,60 +397,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 4c. Focus Carousel (Ambiti di Competenza) ---
-    // A 3D wheel with 4 fixed slots (front/right/back/left — see the
-    // .focus-card--* rules in style.css). Each card's distance from the
-    // active index decides which slot class it gets; the animation is just
-    // the CSS transition on .focus-card firing because that class (and so
-    // its transform) changed. Advancing "next" shifts every card exactly
-    // one slot at once — front→left, right→front, back→right, left→back —
-    // which is what makes it read as the whole wheel turning rather than a
-    // single card swap.
-    const focusTrack = document.getElementById('focus-track');
-    const focusCards = focusTrack ? focusTrack.querySelectorAll('.focus-card') : [];
-    const focusDots = document.querySelectorAll('.focus-dot');
-    const focusPrevBtn = document.getElementById('focus-prev');
-    const focusNextBtn = document.getElementById('focus-next');
-    const focusSlotClasses = ['focus-card--front', 'focus-card--right', 'focus-card--back', 'focus-card--left'];
-
-    if (focusTrack && focusCards.length) {
-        let focusIndex = 0;
-        const focusCount = focusCards.length;
-
-        const renderFocus = () => {
-            focusCards.forEach((card, i) => {
-                const slot = (i - focusIndex + focusCount) % focusCount;
-                card.classList.remove(...focusSlotClasses);
-                card.classList.add(focusSlotClasses[slot % focusSlotClasses.length]);
-            });
-            focusDots.forEach((dot, i) => dot.classList.toggle('active', i === focusIndex));
-        };
-
-        const goToFocus = (index) => {
-            focusIndex = (index + focusCount) % focusCount;
-            renderFocus();
-        };
-
-        if (focusPrevBtn) focusPrevBtn.addEventListener('click', () => goToFocus(focusIndex - 1));
-        if (focusNextBtn) focusNextBtn.addEventListener('click', () => goToFocus(focusIndex + 1));
-        focusDots.forEach((dot, i) => dot.addEventListener('click', () => goToFocus(i)));
-
-        // Basic touch swipe, since "like cards" implies a swipeable feel on mobile.
-        let focusTouchStartX = null;
-        focusTrack.addEventListener('touchstart', (e) => {
-            focusTouchStartX = e.touches[0].clientX;
-        }, { passive: true });
-        focusTrack.addEventListener('touchend', (e) => {
-            if (focusTouchStartX === null) return;
-            const deltaX = e.changedTouches[0].clientX - focusTouchStartX;
-            if (Math.abs(deltaX) > 40) {
-                goToFocus(deltaX < 0 ? focusIndex + 1 : focusIndex - 1);
-            }
-            focusTouchStartX = null;
-        }, { passive: true });
-
-        renderFocus();
-    }
 
     // --- 5. Ostro Project Data & Modal (specs + demo screenshots) ---
     const projectsData = {
@@ -453,16 +407,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 tagline: "“Il vento che porta le tue domande fino in fondo ai dati, e torna con la risposta.”",
                 sections: [
                     {
-                        title: "Contesto — Il Primo di Molti Ponti",
+                        title: "Contesto",
                         text: "Questo progetto rappresenta la prima concretizzazione applicativa di una visione più ampia: interporsi tra entità, ambienti e contesti diversi per eliminare l'incomunicabilità ed i passaggi macchinosi. Nelle strutture informative tradizionali, la distanza tra chi cerca risposte ed i dati memorizzati crea barriere e dipendenze rigide. Questo strumento nasce per collocarsi in posizione intermedia, traducendo la complessità in un dialogo naturale."
                     },
                     {
-                        title: "La Soluzione — Mediazione tra Umano e Dati",
+                        title: "Soluzione",
                         text: "Ostro è un agente virtuale offline in grado di interpretare domande formulate in linguaggio naturale e tradurle istantaneamente in query SQL precise. Elimina la rigidità dei canali tradizionali e rende l'interazione fluida, immediata e guidata dall'esperienza utente. Per garantire la tutela dell'ambiente dati, l'agente opera in sola lettura (READ-ONLY)."
                     },
                     {
-                        title: "La Demo & l'Autonomia di Consultazione",
-                        text: "Per mostrare sul campo come la mediazione possa semplificare il rapporto con l'informazione, la demo si appoggia su un database di prova con dati simulati (estrazione ed analisi dei trend meteomarini della laguna di Venezia), evidenziando come chiunque possa ricavare report e grafici senza ostacoli tecnici."
+                        title: "Informazioni sulla Demo",
+                        text: "Per mostrare sul campo come la mediazione possa semplificare il rapporto con l'informazione, la demo si appoggia su un database di prova con dati semplificati e simulati (misurazioni del livello della marea lungo la costa italiana), evidenziando come chiunque possa ricavare report e grafici senza ostacoli tecnici."
                     },
                     {
                         title: "Architettura (100% Locale, Sicura ed Indipendente)",
@@ -485,16 +439,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 tagline: "“The wind that carries your questions all the way to the data, and comes back with the answer.”",
                 sections: [
                     {
-                        title: "Context — The First of Many Bridges",
+                        title: "Context",
                         text: "This project is the first applied realization of a broader vision: positioning myself between different entities, environments and contexts to eliminate communication breakdowns and cumbersome processes. In traditional information systems, the distance between those seeking answers and the stored data creates barriers and rigid dependencies. This tool was built to sit in that intermediate position, translating complexity into natural dialogue."
                     },
                     {
-                        title: "The Solution — Mediation Between Human and Data",
+                        title: "Solution",
                         text: "Ostro is an offline virtual agent capable of interpreting questions asked in natural language and instantly translating them into precise SQL queries. It removes the rigidity of traditional channels and makes the interaction fluid, immediate and driven by user experience. To protect the data environment, the agent operates in read-only mode."
                     },
                     {
-                        title: "The Demo & Autonomous Querying",
-                        text: "To show in practice how this mediation can simplify the relationship with information, the demo runs on a test database with simulated data (extraction and analysis of meteo-marine trends in the Venice lagoon), showing how anyone can produce reports and charts without technical obstacles."
+                        title: "About the Demo",
+                        text: "To show in practice how this mediation can simplify the relationship with information, the demo runs on a test database with simplified, simulated data (tide level measurements along the Italian coast), showing how anyone can produce reports and charts without technical obstacles."
                     },
                     {
                         title: "Architecture (100% Local, Secure and Independent)",

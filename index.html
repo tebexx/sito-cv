@@ -250,57 +250,82 @@
 
                 </div>
 
-                <!-- Focus Areas: one card visible at a time, swapped via a sliding
-                     transition instead of a static grid. -->
+                <!-- Focus Areas: static grid, one card per area. -->
                 <div class="focus-section">
                     <h3 class="focus-title reveal-item" data-i18n="focus.sectionTitle">Ambiti di Competenza</h3>
-                    <div class="focus-carousel reveal-item">
-                        <button class="focus-nav focus-nav-prev" type="button" id="focus-prev" aria-label="Precedente" data-i18n-aria="focus.prev">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="15 18 9 12 15 6"></polyline>
-                            </svg>
-                        </button>
+                    <div class="focus-grid">
+                        <div class="focus-card reveal-item">
+                            <div class="focus-num">01</div>
+                            <h4 data-i18n="focus.card1.title">Facilitazione tra Enti</h4>
+                            <p data-i18n="focus.card1.desc">L'ho capito mettendo le mani su realtà molto diverse: dai dati meteomarini della Laguna di Venezia alle diverse realtà della ristorazione in cui mi sono confrontato.</p>
+                        </div>
 
-                        <div class="focus-viewport">
-                            <div class="focus-track" id="focus-track">
-                                <div class="focus-card focus-card--front">
-                                    <div class="focus-num">01</div>
-                                    <h4 data-i18n="focus.card1.title">Facilitazione tra Enti</h4>
-                                    <p data-i18n="focus.card1.desc">L'ho capito lavorando tanto sui dati meteomarini del MOSE quanto in sala in un ristorante di alto livello: il problema non è mai la tecnologia o le persone in sé, ma la distanza tra chi parla linguaggi diversi. Il mio compito è colmarla.</p>
-                                </div>
+                        <div class="focus-card reveal-item">
+                            <div class="focus-num">02</div>
+                            <h4 data-i18n="focus.card2.title">Fluidità delle Relazioni</h4>
+                            <p data-i18n="focus.card2.desc">Non credo nei processi che chiedono alle persone di adattarsi alla tecnologia. Credo in sistemi capaci di ascoltare, adattarsi e cambiare insieme a chi li utilizza.</p>
+                        </div>
 
-                                <div class="focus-card focus-card--right">
-                                    <div class="focus-num">02</div>
-                                    <h4 data-i18n="focus.card2.title">Fluidità delle Relazioni</h4>
-                                    <p data-i18n="focus.card2.desc">Ho visto troppi processi rigidi rompersi proprio nel momento in cui contano di più, che fosse un'automazione o un servizio a un tavolo pieno. Preferisco costruire flussi che si adattano alle persone, non il contrario.</p>
-                                </div>
+                        <div class="focus-card reveal-item">
+                            <div class="focus-num">03</div>
+                            <h4 data-i18n="focus.card3.title">Abbattimento Barriere</h4>
+                            <p data-i18n="focus.card3.desc">Un modello che non comprende una richiesta, un dato che non riesce a dialogare con un altro sistema, una persona che non si sente ascoltata: problemi diversi, ma alla base c'è sempre una barriera. Mi interessa trovare il modo di superarla.</p>
+                        </div>
 
-                                <div class="focus-card focus-card--back">
-                                    <div class="focus-num">03</div>
-                                    <h4 data-i18n="focus.card3.title">Abbattimento Barriere</h4>
-                                    <p data-i18n="focus.card3.desc">Un modello che non capisce una domanda, un dato che non dialoga con un altro sistema, un cliente che non si sente ascoltato: per me sono la stessa incomunicabilità travestita diversamente. La affronto ovunque la trovi.</p>
-                                </div>
+                        <div class="focus-card reveal-item">
+                            <div class="focus-num">04</div>
+                            <h4 data-i18n="focus.card4.title">Coordinamento & Empatia</h4>
+                            <p data-i18n="focus.card4.desc">Ho imparato a leggere situazioni e persone in tempo reale, soprattutto quando la pressione aumenta e le decisioni devono essere rapide. È una capacità che porto nel modo in cui affronto progetti, collaborazioni e problemi complessi.</p>
+                        </div>
+                    </div>
+                </div>
 
-                                <div class="focus-card focus-card--left">
-                                    <div class="focus-num">04</div>
-                                    <h4 data-i18n="focus.card4.title">Coordinamento & Empatia</h4>
-                                    <p data-i18n="focus.card4.desc">Anni passati a coordinare sale e cucine nei momenti di massima pressione mi hanno insegnato a leggere le persone in tempo reale. È la stessa lucidità che porto quando gestisco un progetto o una relazione complicata.</p>
-                                </div>
+                <!-- Technical Skills: simple tag grid grouped by category. -->
+                <div class="skills-section">
+                    <h3 class="skills-title reveal-item" data-i18n="skills.sectionTitle">Competenze Tecniche</h3>
+                    <div class="skills-groups">
+                        <div class="skills-group reveal-item">
+                            <h4 data-i18n="skills.group1.title">Linguaggi & Framework</h4>
+                            <div class="skills-tags">
+                                <span>Python</span>
+                                <span>JavaScript</span>
+                                <span>C</span>
+                                <span>C++</span>
+                                <span>Java</span>
+                                <span>SQL</span>
+                                <span>React Native</span>
+                                <span>HTML / CSS</span>
                             </div>
                         </div>
 
-                        <button class="focus-nav focus-nav-next" type="button" id="focus-next" aria-label="Successivo" data-i18n-aria="focus.next">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                        </button>
-                    </div>
+                        <div class="skills-group reveal-item">
+                            <h4 data-i18n="skills.group2.title">AI & Architettura Dati</h4>
+                            <div class="skills-tags">
+                                <span>NLP</span>
+                                <span>RAG</span>
+                                <span>Embedding Models</span>
+                                <span>Transformers</span>
+                                <span>Vector Search</span>
+                                <span>LangChain</span>
+                                <span>Hugging Face</span>
+                                <span>Ollama</span>
+                                <span>LLM Locali</span>
+                                <span>Docker LLMs</span>
+                            </div>
+                        </div>
 
-                    <div class="focus-dots" id="focus-dots">
-                        <button class="focus-dot active" type="button" aria-label="1"></button>
-                        <button class="focus-dot" type="button" aria-label="2"></button>
-                        <button class="focus-dot" type="button" aria-label="3"></button>
-                        <button class="focus-dot" type="button" aria-label="4"></button>
+                        <div class="skills-group reveal-item">
+                            <h4 data-i18n="skills.group3.title">Strumenti</h4>
+                            <div class="skills-tags">
+                                <span>Docker</span>
+                                <span>Git</span>
+                                <span>GitHub</span>
+                                <span>Bitbucket</span>
+                                <span>Bash / Shell Scripting</span>
+                                <span>API REST</span>
+                                <span>PM2</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -379,7 +404,7 @@
 
                 <div class="contact-simple reveal-item">
                     <p class="contact-lead" data-i18n="contact.lead">
-                        Se hai in mente un progetto, una collaborazione o semplicemente vuoi farmi delle domande sul mio percorso, puoi scrivermi direttamente. Sono basato a Venezia.
+                        Se hai in mente un progetto, una collaborazione, o vuoi solo scambiare due parole sul mio percorso, scrivimi pure: mi fa sempre piacere. Per ora sono a Venezia, ma il vento sta già girando verso nuovi lidi.
                     </p>
                     <div class="contact-buttons">
                         <a href="mailto:tobia.barbini@gmail.com" class="btn btn-primary" data-i18n="contact.emailBtn">Invia una Mail</a>
