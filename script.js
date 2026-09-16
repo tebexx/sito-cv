@@ -87,10 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 skillsLabel: "Competenze Applicate",
                 viewDemo: "Vedi la Demo",
                 backToSpecs: "Torna alle Specifiche",
-                demoHeading: "Demo — Screenshot",
+                demoHeading: "Immagini Dimostrative",
                 demoAlt: "Schermata della demo di Ostro",
                 flipHint: "Clicca per leggere",
-                enlarge: "Ingrandisci"
+                enlarge: "Ingrandisci",
+                rotateHint: "⟳ Ruota lo schermo per una visione migliore"
             },
             meta: {
                 title: "Tobia Barbini | Facilitatore di Processi & Interazione",
@@ -200,10 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 skillsLabel: "Skills Applied",
                 viewDemo: "View the Demo",
                 backToSpecs: "Back to Specs",
-                demoHeading: "Demo: Screenshots",
+                demoHeading: "Demo Images",
                 demoAlt: "Ostro demo screenshot",
                 flipHint: "Click to read",
-                enlarge: "Enlarge"
+                enlarge: "Enlarge",
+                rotateHint: "⟳ Rotate your screen for a better view"
             },
             meta: {
                 title: "Tobia Barbini | Process & Interaction Facilitator",
@@ -403,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
         it: {
             ostro: {
                 title: "Ostro",
-                category: "Progetto Personale",
+                category: "Rosa dei Venti",
                 tagline: "“Il vento che porta le tue domande fino in fondo ai dati, e torna con la risposta.”",
                 sections: [
                     {
@@ -435,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
         en: {
             ostro: {
                 title: "Ostro",
-                category: "Personal Project",
+                category: "Rosa dei Venti",
                 tagline: "“The wind that carries your questions all the way to the data, and comes back with the answer.”",
                 sections: [
                     {
@@ -467,11 +469,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const DEMO_SCREENSHOTS = [
-        "screen/Screenshot%20(1).png",
-        "screen/Screenshot%20(2).png",
-        "screen/Screenshot%20(3).png",
-        "screen/Screenshot%20(4).png",
-        "screen/Screenshot%20(5).png"
+        "screen/screen%201.png",
+        "screen/screen%202.png",
+        "screen/screen%203.png",
+        "screen/screen%204.png",
+        "screen/screen%205.png"
     ];
 
     const modal = document.getElementById('project-modal');
@@ -625,7 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
 
         modalContent.innerHTML = `
-            <span class="modal-detail-tag">${project.category}</span>
+            <span class="modal-detail-tag">${project.title}</span>
             <h3 class="modal-detail-title">${labels.demoHeading}</h3>
 
             <div class="demo-screens">${imagesHtml}</div>
