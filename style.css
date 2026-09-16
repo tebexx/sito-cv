@@ -1660,9 +1660,6 @@ button, input, textarea {
     .spec-cards {
         grid-template-columns: 1fr;
     }
-    .spec-card {
-        height: 200px;
-    }
 }
 
 .spec-card {
@@ -1755,7 +1752,15 @@ button, input, textarea {
 
 .spec-card-back {
     transform: rotateY(180deg);
-    justify-content: center;
+    /* flex-start, not center: with overflow-y:auto, a centered flex child
+       taller than its box overflows equally above AND below — scrollTop:0
+       then lands you mid-text with the opening line already scrolled past
+       and unreachable. Top-aligned content always starts, well, at the
+       start. The card is now sized to fit every card's text anyway (see
+       the mobile height above), so this is a safety net for edge cases
+       (very long translations, larger accessibility font sizes), not the
+       everyday behavior. */
+    justify-content: flex-start;
     overflow-y: auto;
 }
 
@@ -2016,6 +2021,16 @@ button, input, textarea {
     .skills-groups {
         grid-template-columns: 1fr;
         gap: 28px;
+    }
+
+    /* Tall enough for the longest back-face text (checked against all 4
+       cards, IT+EN) so it never needs the internal scroll on
+       .spec-card-back — a short/empty scrollbar there was cutting off the
+       start of the text on phones. Placed in this later media query (not
+       right after the base .spec-card rule) so it actually wins the
+       cascade instead of being silently overridden by it. */
+    .spec-card {
+        height: 370px;
     }
 
     .journey-item {
