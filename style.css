@@ -1,3 +1,24 @@
+/* --- Self-hosted fonts ---
+   Previously loaded from Google Fonts (fonts.googleapis.com/fonts.gstatic.com),
+   which sends every visitor's IP to Google before they've agreed to
+   anything — self-hosting removes that entirely and drops one round-trip.
+   Both are variable fonts, so one file each covers the whole 300-700
+   weight range the site uses. */
+@font-face {
+    font-family: 'Outfit';
+    src: url('fonts/outfit-variable.woff2') format('woff2-variations'), url('fonts/outfit-variable.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('fonts/plus-jakarta-sans-variable.woff2') format('woff2-variations'), url('fonts/plus-jakarta-sans-variable.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* --- Reset & Variables --- */
 :root {
     --color-bg: #000000;
@@ -236,6 +257,7 @@ button, input, textarea {
     font-weight: 500;
     font-size: 0.9rem;
     cursor: pointer;
+    border-radius: var(--radius-sm);
     transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                 color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                 border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -837,6 +859,7 @@ button, input, textarea {
     align-items: center;
     justify-content: center;
     border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
     color: var(--color-text-muted);
     cursor: pointer;
     transition: var(--transition-fast);
@@ -1714,6 +1737,25 @@ button, input, textarea {
     height: 230px;
     cursor: pointer;
     outline: none;
+    /* Entrance: fades/slides in on its own (staggered per-card delay set
+       inline in script.js) whenever the specs view renders, so the modal
+       doesn't just dump 4 flat boxes on screen at once. `backwards` holds
+       the 0% keyframe (invisible) until the delay elapses. */
+    animation: spec-card-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Lifts on hover/focus — on .spec-card itself, not .spec-card-inner, so it
+   composes cleanly with that element's own flip rotation instead of
+   fighting over the same transform. */
+.spec-card:hover,
+.spec-card:focus-visible {
+    transform: translateY(-6px);
+}
+
+@keyframes spec-card-in {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .spec-card-inner {
@@ -1738,12 +1780,13 @@ button, input, textarea {
     background: var(--color-surface);
     padding: 22px 22px;
     backface-visibility: hidden;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .spec-card:hover .spec-card-face,
 .spec-card:focus-visible .spec-card-face {
     border-color: var(--color-border-hover);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4);
 }
 
 .spec-card-front {
@@ -2082,7 +2125,8 @@ button, input, textarea {
 
     .hero-blob,
     .hero-title .text-light,
-    .scroll-down-btn {
+    .scroll-down-btn,
+    .spec-card {
         animation: none;
     }
 
@@ -2101,6 +2145,7 @@ button, input, textarea {
     .focus-dot,
     .btn,
     .logo,
+    .spec-card,
     .spec-card-inner,
     .owr-info-banner,
     .lightbox-img {

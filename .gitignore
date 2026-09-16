@@ -1,0 +1,10 @@
+# Local dev tooling (test server config), not needed for the published site
+.claude/
+
+# Working files not part of the published site
+ASSISTENTE_maree.pdf
+rosa-dei-venti.html
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db

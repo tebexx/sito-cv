@@ -552,7 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? `<ul class="spec-card-list">${section.list.map(item => `<li><strong>${item.label}:</strong> ${item.text}</li>`).join('')}</ul>`
                 : '';
             return `
-                <div class="spec-card" tabindex="0" role="button" aria-pressed="false" aria-label="${section.title}">
+                <div class="spec-card" tabindex="0" role="button" aria-pressed="false" aria-label="${section.title}" style="animation-delay: ${i * 0.1}s;">
                     <div class="spec-card-inner">
                         <div class="spec-card-face spec-card-front">
                             <span class="spec-card-num">0${i + 1}</span>
@@ -618,6 +618,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (demoBtn) demoBtn.addEventListener('click', renderOstroDemo);
         const closeBtn = modalContent.querySelector('.modal-close-btn');
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+        attachMagneticButtons(modalContent);
     }
 
     // The demo: just the 5 screenshots, uncaptioned for now.
@@ -639,7 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="demo-screens">${imagesHtml}</div>
 
             <div class="modal-btn-row">
-                <button class="btn btn-secondary modal-back-btn">${labels.backToSpecs}</button>
+                <button class="btn btn-primary modal-back-btn">${labels.backToSpecs}</button>
                 <button class="btn btn-secondary modal-close-btn">${labels.close}</button>
             </div>
         `;
@@ -663,6 +665,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (backBtn) backBtn.addEventListener('click', renderOstroSpecs);
         const closeBtn = modalContent.querySelector('.modal-close-btn');
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+        attachMagneticButtons(modalContent);
     }
 
     // Screenshot lightbox: full-screen view of a clicked demo screenshot.
@@ -999,31 +1003,59 @@ document.addEventListener('DOMContentLoaded', () => {
         spySections.forEach(sec => spyObserver.observe(sec));
     }
 
-    if (!prefersReducedMotion) {
-
-        // Small helper: only ever run `apply` once per animation frame, always
-        // with the latest pointer position. Raw mousemove can fire far more
-        // often than the screen refreshes, so writing styles on every single
-        // event (as the previous version did) causes stutter under fast
-        // mouse movement — this keeps every effect locked to the frame rate.
-        function rafThrottle(apply) {
-            let queued = null;
-            let rafId = null;
-            const flush = () => {
-                apply(queued);
+    // Small helper: only ever run `apply` once per animation frame, always
+    // with the latest pointer position. Raw mousemove can fire far more
+    // often than the screen refreshes, so writing styles on every single
+    // event (as the previous version did) causes stutter under fast
+    // mouse movement — this keeps every effect locked to the frame rate.
+    // Kept top-level (not nested in the reduced-motion check below) so it —
+    // and attachMagneticButtons, which depends on it — are always callable,
+    // including from the Ostro modal renderers defined earlier in this file.
+    function rafThrottle(apply) {
+        let queued = null;
+        let rafId = null;
+        const flush = () => {
+            apply(queued);
+            rafId = null;
+        };
+        return {
+            update(value) {
+                queued = value;
+                if (rafId === null) rafId = requestAnimationFrame(flush);
+            },
+            cancel() {
+                if (rafId !== null) cancelAnimationFrame(rafId);
                 rafId = null;
-            };
-            return {
-                update(value) {
-                    queued = value;
-                    if (rafId === null) rafId = requestAnimationFrame(flush);
-                },
-                cancel() {
-                    if (rafId !== null) cancelAnimationFrame(rafId);
-                    rafId = null;
-                }
-            };
-        }
+            }
+        };
+    }
+
+    // Gives every .btn inside `container` the same magnetic hover pull as
+    // the static buttons below. Needed because the Ostro modal's buttons
+    // (specs/demo views) are (re)built via innerHTML well after the initial
+    // page-load pass, so that pass never saw them — called again after each
+    // render in renderOstroSpecs()/renderOstroDemo().
+    function attachMagneticButtons(container) {
+        if (prefersReducedMotion || !container) return;
+        container.querySelectorAll('.btn').forEach(btn => {
+            const magnet = rafThrottle(({ x, y }) => {
+                btn.style.transform = `translate(${x * 0.15}px, ${y * 0.3}px)`;
+            });
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                magnet.update({
+                    x: e.clientX - rect.left - rect.width / 2,
+                    y: e.clientY - rect.top - rect.height / 2
+                });
+            });
+            btn.addEventListener('mouseleave', () => {
+                magnet.cancel();
+                btn.style.transform = '';
+            });
+        });
+    }
+
+    if (!prefersReducedMotion) {
 
         // --- 9. Hero Cursor Spotlight ---
         // Moves a pre-rendered glow with translate3d (GPU compositor only,
@@ -1041,22 +1073,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // --- 10. Magnetic Buttons ---
-        document.querySelectorAll('.btn').forEach(btn => {
-            const magnet = rafThrottle(({ x, y }) => {
-                btn.style.transform = `translate(${x * 0.15}px, ${y * 0.3}px)`;
-            });
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                magnet.update({
-                    x: e.clientX - rect.left - rect.width / 2,
-                    y: e.clientY - rect.top - rect.height / 2
-                });
-            });
-            btn.addEventListener('mouseleave', () => {
-                magnet.cancel();
-                btn.style.transform = '';
-            });
-        });
+        attachMagneticButtons(document);
 
         // --- 11. 3D Tilt on Project Cards ---
         document.querySelectorAll('.project-card').forEach(card => {
