@@ -25,10 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
             journey: {
                 experienceTitle: "Esperienza Lavorativa",
                 item1: { title: "Sviluppatore Python", desc: "Estrazione in tempo reale di dati meteomarini acquisiti da stazioni lagunari per modelli di previsione statistici della marea, considerando le interferenze del sistema MOSE. Gestione e segnalazione allerte meteo lungo la costa regionale." },
-                item2: { desc: "Gestione della sala, coordinamento dei runner e del flusso piatti dalla cucina (gestione del pass) in contesti ad alto profilo. Formazione del personale e cura dettagliata del servizio clienti." },
                 item3: { desc: "Ricerca e sperimentazione su modelli di embedding per la ricerca semantica, analisi comparativa di modelli e studio di tecniche avanzate di Natural Language Processing (NLP)." },
                 item4: { desc: "Sviluppo in React Native per l'applicazione mobile di delivery (gestione flussi clienti e corrieri), curando la manutenzione del codice e l'ottimizzazione dell'esperienza utente." },
-                item5: { title: "Cameriere / Barista", desc: "Servizio autonomo e gestione di eventi formali e di alto profilo nel centro storico di Venezia. Collaborazione alla logistica e gestione delle materie prime." },
+                item5: { title: "Cameriere / Chef de Rang", desc: "Percorso in sala dal servizio autonomo alla gestione completa: coordinamento del flusso piatti, formazione del personale e cura del servizio clienti, dal centro storico di Venezia agli hotel di alto profilo di St. Moritz." },
                 educationTitle: "Formazione & Certificazioni",
                 item6: { title: "Laurea Triennale in Informatica", desc: "Percorso focalizzato su intelligenza artificiale, architettura dei dati ed interazione. Tesi di laurea sperimentale sulla comparazione e analisi di diversi modelli di embedding in un contesto di similarità semantica." },
                 item7: { title: "Diploma ESABAC Italo-Francese", desc: "Diploma binazionale che certifica una formazione linguistica e letteraria approfondita in italiano e francese." },
@@ -52,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             projects: {
                 sectionTitle: "Progetti Personali",
                 windroseName: "Rosa dei Venti",
-                windroseDesc: "Un selettore di progetti a forma di bussola nautica: ogni punto cardinale è un'iniziativa personale. Passa il mouse per orientare l'ago, clicca un vento per scoprirlo."
+                windroseDesc: "Come il vento trasforma una vela in movimento, le mie soluzioni trasformano la complessità in slancio. Passa il mouse per orientare l'ago, clicca un vento per scoprirlo."
             },
             windrose: {
                 tooltip: "Scopri di più",
@@ -74,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             footer: {
                 rights: "Tutti i diritti riservati.",
-                backToTop: "Torna all'inizio"
+                backToTop: "Torna all'inizio",
+                privacy: "Privacy Policy"
             },
             modal: {
                 close: "Chiudi",
@@ -91,6 +91,26 @@ document.addEventListener('DOMContentLoaded', () => {
             meta: {
                 title: "Tobia Barbini | Facilitatore di Processi & Interazione",
                 description: "Portfolio di Tobia Barbini. Creo soluzioni e mi inserisco tra enti, ambienti e persone diverse per risolvere problemi di relazione, rendendo la comunicazione fluida, naturale ed efficace."
+            },
+            privacy: {
+                pageTitle: "Privacy Policy",
+                metaTitle: "Privacy Policy | Tobia Barbini",
+                metaDescription: "Informativa sulla privacy del portfolio di Tobia Barbini: hosting, memorizzazione locale, cookie e contatti.",
+                updated: "Ultimo aggiornamento: Settembre 2026",
+                intro: "Questa pagina descrive come questo sito tratta i dati dei visitatori. Il titolare di questo sito è Tobia Barbini; per qualsiasi domanda puoi scrivere a tobia.barbini@gmail.com.",
+                hostingTitle: "Hosting e log tecnici",
+                hostingText: "Questo sito è ospitato su GitHub Pages (GitHub, Inc.). Come qualsiasi servizio di hosting, GitHub può registrare automaticamente dati tecnici di connessione (ad esempio indirizzo IP, tipo di browser, data e ora della richiesta) nei propri log di sistema, per finalità di sicurezza e funzionamento del servizio. Questo sito non ha accesso a tali log. Per maggiori informazioni, consulta la privacy policy di GitHub.",
+                localStorageTitle: "Memorizzazione locale",
+                localStorageText: "Il sito salva nel browser dell'utente, tramite la tecnologia localStorage, esclusivamente la preferenza di lingua scelta (italiano o inglese). Questo dato resta sul dispositivo dell'utente, non viene mai trasmesso a me né a terzi, e può essere cancellato in qualsiasi momento svuotando i dati di navigazione del browser.",
+                cookiesTitle: "Cookie e tracciamento",
+                cookiesText: "Questo sito non utilizza cookie di profilazione, strumenti di analisi (analytics) né tracciamento di terze parti.",
+                fontsTitle: "Font",
+                fontsText: "I font utilizzati sono ospitati direttamente su questo sito, non tramite Google Fonts o altri servizi esterni: il loro caricamento non comporta quindi alcuna trasmissione di dati a terze parti.",
+                contactTitle: "Contatti via email",
+                contactText: "Il pulsante “Invia una Mail” si limita ad aprire il client di posta predefinito del tuo dispositivo (link mailto): il sito non possiede un modulo che raccoglie o invia dati a un server. Qualsiasi comunicazione via email avviene direttamente tra te e me, secondo le normali modalità di corrispondenza privata.",
+                rightsTitle: "Domande",
+                rightsText: "Per qualsiasi domanda su questa informativa, scrivimi a tobia.barbini@gmail.com.",
+                backHome: "Torna al sito"
             }
         },
         en: {
@@ -114,10 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
             journey: {
                 experienceTitle: "Work Experience",
                 item1: { title: "Python Developer", desc: "Real-time extraction of meteo-marine data collected from lagoon stations for statistical tide forecasting models, accounting for interference from the MOSE flood barrier system. Management and issuance of weather alerts along the regional coast." },
-                item2: { desc: "Dining room management, coordination of runners and the flow of dishes from the kitchen (pass management) in high-profile settings. Staff training and meticulous attention to customer service." },
                 item3: { desc: "Research and experimentation on embedding models for semantic search, comparative analysis of models, and study of advanced Natural Language Processing (NLP) techniques." },
                 item4: { desc: "React Native development for the delivery mobile app (managing customer and courier flows), handling code maintenance and user experience optimization." },
-                item5: { title: "Waiter / Barista", desc: "Independent service and management of formal, high-profile events in the historic center of Venice. Collaboration on logistics and supply management." },
+                item5: { title: "Waiter / Chef de Rang", desc: "A front-of-house path from independent service to full floor management: coordinating the dish flow, training staff and looking after guests, from Venice's historic center to high-profile hotels in St. Moritz." },
                 educationTitle: "Education & Certifications",
                 item6: { title: "Bachelor's Degree in Computer Science", desc: "A path focused on artificial intelligence, data architecture and interaction. Experimental thesis on the comparison and analysis of different embedding models in a semantic similarity context." },
                 item7: { title: "Italian-French ESABAC Diploma", desc: "A binational diploma certifying in-depth linguistic and literary training in Italian and French." },
@@ -141,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             projects: {
                 sectionTitle: "Personal Projects",
                 windroseName: "Rosa dei Venti",
-                windroseDesc: "A project selector shaped like a nautical compass: each cardinal point is a personal project. Hover to steer the needle, click a wind to discover it."
+                windroseDesc: "Just as wind turns a sail into motion, my solutions turn complexity into momentum. Hover to steer the needle, click a wind to discover it."
             },
             windrose: {
                 tooltip: "Learn more",
@@ -163,7 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             footer: {
                 rights: "All rights reserved.",
-                backToTop: "Back to top"
+                backToTop: "Back to top",
+                privacy: "Privacy Policy"
             },
             modal: {
                 close: "Close",
@@ -180,6 +200,26 @@ document.addEventListener('DOMContentLoaded', () => {
             meta: {
                 title: "Tobia Barbini | Process & Interaction Facilitator",
                 description: "Portfolio of Tobia Barbini. I design solutions and position myself between organizations, environments and people to solve relational problems, making communication fluid, natural and effective."
+            },
+            privacy: {
+                pageTitle: "Privacy Policy",
+                metaTitle: "Privacy Policy | Tobia Barbini",
+                metaDescription: "Privacy policy for Tobia Barbini's portfolio: hosting, local storage, cookies and contact.",
+                updated: "Last updated: September 2026",
+                intro: "This page describes how this site handles visitor data. This site's owner is Tobia Barbini; for any questions, feel free to write to tobia.barbini@gmail.com.",
+                hostingTitle: "Hosting & Technical Logs",
+                hostingText: "This site is hosted on GitHub Pages (GitHub, Inc.). Like any hosting service, GitHub may automatically log basic technical connection data (such as IP address, browser type, and request timestamp) in its own system logs, for security and operational purposes. This site has no access to those logs. For more information, see GitHub's own privacy statement.",
+                localStorageTitle: "Local Storage",
+                localStorageText: "The site saves only your chosen language preference (Italian or English) in your browser via localStorage. This data stays on your own device, is never transmitted to me or to any third party, and can be cleared at any time by clearing your browser's site data.",
+                cookiesTitle: "Cookies & Tracking",
+                cookiesText: "This site does not use profiling cookies, analytics tools, or third-party tracking of any kind.",
+                fontsTitle: "Fonts",
+                fontsText: "The fonts used are hosted directly on this site rather than through Google Fonts or any other external service, so loading them involves no data transmission to third parties.",
+                contactTitle: "Contact via Email",
+                contactText: "The “Send an Email” button simply opens your device's default email client (a mailto link): the site has no form that collects or sends data to a server. Any email exchange happens directly between you and me, as ordinary private correspondence.",
+                rightsTitle: "Questions",
+                rightsText: "For any questions about this notice, write to me at tobia.barbini@gmail.com.",
+                backHome: "Back to the site"
             }
         }
     };
@@ -200,10 +240,16 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('site-lang', lang);
         document.documentElement.lang = lang;
 
-        const pageTitle = getTranslation(lang, 'meta.title');
+        // Sub-pages (e.g. privacy.html) carry their own <title>/description
+        // rather than the homepage's, via a data-page attribute on <body>.
+        const page = document.body.dataset.page;
+        const titleKey = page === 'privacy' ? 'privacy.metaTitle' : 'meta.title';
+        const descKey = page === 'privacy' ? 'privacy.metaDescription' : 'meta.description';
+
+        const pageTitle = getTranslation(lang, titleKey);
         if (pageTitle) document.title = pageTitle;
         const metaDesc = document.querySelector('meta[name="description"]');
-        const pageDesc = getTranslation(lang, 'meta.description');
+        const pageDesc = getTranslation(lang, descKey);
         if (metaDesc && pageDesc) metaDesc.setAttribute('content', pageDesc);
 
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -487,26 +533,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const owrInfoNote = document.getElementById('owr-info-note');
     const owrInfoCta = document.getElementById('owr-info-cta');
 
-    // N/E/S/O -> which side of its point the banner should float on
-    // (below / above / left-of / right-of — see the [data-dir] rules in
-    // style.css).
-    const OWR_BANNER_DIR = { N: 'n', E: 'e', S: 's', O: 'w' };
-
     // Wind info banner: opened by clicking any cardinal point on the rosa
-    // dei venti (see buildWindRose below), and positioned right next to
-    // that point (wind.anchorX/anchorY, set in buildWindRose) rather than
-    // in a fixed spot. Only the active wind (Ostro) gets a CTA through to
-    // the full project specs modal.
+    // dei venti (see buildWindRose below), always centered over the
+    // compass itself (see .owr-info-banner in style.css) so it appears in
+    // the same predictable spot regardless of which wind was clicked.
+    // Only the active wind (Ostro) gets a CTA through to the full project
+    // specs modal.
     function showWindBanner(wind) {
         if (!owrInfoBanner) return;
         const labels = translations[currentLang].windrose;
         const desc = (labels.descriptions && labels.descriptions[wind.name]) || '';
-
-        if (typeof wind.anchorX === 'number') {
-            owrInfoBanner.style.left = wind.anchorX + '%';
-            owrInfoBanner.style.top = wind.anchorY + '%';
-            owrInfoBanner.dataset.dir = OWR_BANNER_DIR[wind.letter] || 's';
-        }
 
         owrInfoBadge.textContent = wind.letter;
         owrInfoTitle.textContent = wind.name;
@@ -838,25 +874,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const cls = "owr-spike-major" + (wind.active ? " owr-spike-active" : "");
             const p = addPolygon(spikePoints(wind.bearing, MAJOR_TIP_R), cls);
             p.setAttribute("fill", wind.active ? "url(#owrGradActive)" : "url(#owrGradInactive)");
-
-            if (wind.bearing === 0) {
-                const tip = polar(0, MAJOR_TIP_R + 4);
-                const mark = document.createElementNS(NS, "text");
-                mark.setAttribute("x", tip[0]);
-                mark.setAttribute("y", tip[1]);
-                mark.setAttribute("text-anchor", "middle");
-                mark.setAttribute("class", "owr-north-mark");
-                mark.setAttribute("fill", "#e2e8f0");
-                mark.setAttribute("font-size", "6");
-                mark.textContent = "✦";
-                svg.appendChild(mark);
-            }
         });
 
         OWR_WINDS.forEach((wind, i) => {
             const [x, y] = polar(wind.bearing, LABEL_RADIUS);
-            wind.anchorX = x;
-            wind.anchorY = y;
 
             const beam = document.createElement("div");
             beam.className = "owr-beam";

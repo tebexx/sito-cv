@@ -1161,9 +1161,6 @@ button, input, textarea {
     filter: drop-shadow(0 0 12px rgba(34,211,238,0.65));
 }
 .owr-spike-minor { opacity: 0.5; }
-.owr-north-mark {
-    filter: drop-shadow(0 0 4px rgba(226,232,240,0.6));
-}
 
 /* Degree ticks + intercardinal labels: purely decorative graduation,
    filling the empty ring between the spikes and the frame like a real
@@ -1297,15 +1294,16 @@ button, input, textarea {
     transform: translateX(-50%) translateY(0);
 }
 
-/* Wind info banner: a small floating card that pops up right next to
-   whichever cardinal point was clicked (not a static block under the
-   compass), describing that wind; for the active one (Ostro) it also
-   links through to the full project specs modal. Position (left/top %)
-   and direction (data-dir) are set by JS in showWindBanner(), anchored to
-   that wind's own point coordinates — the transform below then offsets the
-   card outward so it doesn't sit on top of the point itself. */
+/* Wind info banner: a floating card describing whichever wind was
+   clicked; for the active one (Ostro) it also links through to the full
+   project specs modal. Always centered over the compass itself — same
+   spot every time regardless of which wind triggered it — rather than
+   anchored next to each point, which read as jumping around unpredictably
+   between clicks. */
 .owr-info-banner {
     position: absolute;
+    top: 50%;
+    left: 50%;
     z-index: 6;
     width: min(280px, 76vw);
     padding: 20px 22px;
@@ -1317,6 +1315,7 @@ button, input, textarea {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.94);
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                 visibility 0.35s;
@@ -1326,23 +1325,8 @@ button, input, textarea {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
 }
-
-/* Below its point (Bora / north) */
-.owr-info-banner[data-dir="n"] { transform: translate(-50%, 6px); }
-.owr-info-banner[data-dir="n"].open { transform: translate(-50%, 22px); }
-
-/* Above its point (Ostro / south) */
-.owr-info-banner[data-dir="s"] { transform: translate(-50%, -6px); }
-.owr-info-banner[data-dir="s"].open { transform: translate(-50%, calc(-100% - 22px)); }
-
-/* To the left of its point (Levante / east) */
-.owr-info-banner[data-dir="e"] { transform: translate(-6px, -50%); }
-.owr-info-banner[data-dir="e"].open { transform: translate(calc(-100% - 22px), -50%); }
-
-/* To the right of its point (Ponente / west) */
-.owr-info-banner[data-dir="w"] { transform: translate(6px, -50%); }
-.owr-info-banner[data-dir="w"].open { transform: translate(22px, -50%); }
 
 .owr-info-close {
     position: absolute;
@@ -1542,6 +1526,11 @@ button, input, textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
 }
 
 .footer-links a {

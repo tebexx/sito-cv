@@ -154,16 +154,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Journey Item 2 -->
-                                <div class="journey-item reveal-item">
-                                    <div class="journey-year">2024 - 2025</div>
-                                    <div class="journey-details">
-                                        <h4>Chef de Rang / Commis de Rang</h4>
-                                        <p class="journey-org">Strazzaria (Venezia) & Paradiso / Badrutt's Palace (St. Moritz, CH)</p>
-                                        <p class="journey-desc" data-i18n="journey.item2.desc">Gestione della sala, coordinamento dei runner e del flusso piatti dalla cucina (gestione del pass) in contesti ad alto profilo. Formazione del personale e cura dettagliata del servizio clienti.</p>
-                                    </div>
-                                </div>
-
                                 <!-- Journey Item 3 -->
                                 <div class="journey-item reveal-item">
                                     <div class="journey-year">2024</div>
@@ -184,13 +174,14 @@
                                     </div>
                                 </div>
 
-                                <!-- Journey Item 5 -->
+                                <!-- Journey Item 5 (condensed: merges the Chef de Rang and
+                                     Cameriere/Barista roles, kept last as less relevant here) -->
                                 <div class="journey-item reveal-item">
-                                    <div class="journey-year">2021 - 2024</div>
+                                    <div class="journey-year">2021 - 2025</div>
                                     <div class="journey-details">
-                                        <h4 data-i18n="journey.item5.title">Cameriere / Barista</h4>
-                                        <p class="journey-org">Rosa Salva, Enoteca al Volto, Osteria Marcianino - Venezia</p>
-                                        <p class="journey-desc" data-i18n="journey.item5.desc">Servizio autonomo e gestione di eventi formali e di alto profilo nel centro storico di Venezia. Collaborazione alla logistica e gestione delle materie prime.</p>
+                                        <h4 data-i18n="journey.item5.title">Cameriere / Chef de Rang</h4>
+                                        <p class="journey-org">Rosa Salva, Enoteca al Volto, Osteria Marcianino, Strazzaria (Venezia) &mdash; Paradiso / Badrutt's Palace (St. Moritz, CH)</p>
+                                        <p class="journey-desc" data-i18n="journey.item5.desc">Percorso in sala dal servizio autonomo alla gestione completa: coordinamento del flusso piatti, formazione del personale e cura del servizio clienti, dal centro storico di Venezia agli hotel di alto profilo di St. Moritz.</p>
                                     </div>
                                 </div>
                             </div>
@@ -332,7 +323,7 @@
                 <div class="featured-project reveal-item">
                     <h3 class="windrose-name" data-i18n="projects.windroseName">Rosa dei Venti</h3>
                     <p class="windrose-desc" data-i18n="projects.windroseDesc">
-                        Un selettore di progetti a forma di bussola nautica: ogni punto cardinale è un'iniziativa personale. Passa il mouse per orientare l'ago, clicca un vento per scoprirlo.
+                        Come il vento trasforma una vela in movimento, le mie soluzioni trasformano la complessità in slancio. Passa il mouse per orientare l'ago, clicca un vento per scoprirlo.
                     </p>
                     <div class="owr-wrapper" id="owr-root">
                         <div class="owr-frame-ring"></div>
@@ -358,8 +349,8 @@
 
                         <!-- i punti cardinali vengono generati da JS a partire da OWR_WINDS -->
 
-                        <!-- Wind info banner: floats next to whichever point was
-                             clicked, positioned by JS (see buildWindRose) -->
+                        <!-- Wind info banner: always centered over the compass,
+                             populated by JS on point click (see showWindBanner) -->
                         <div class="owr-info-banner" id="owr-info-banner">
                             <button class="owr-info-close" id="owr-info-close" aria-label="Chiudi" data-i18n-aria="windrose.closeBanner">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -406,6 +397,7 @@
         <div class="container footer-container">
             <p class="copyright">&copy; <span id="year">2026</span> Tobia Barbini. <span data-i18n="footer.rights">Tutti i diritti riservati.</span></p>
             <div class="footer-links">
+                <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
                 <a href="#hero" data-i18n="footer.backToTop">Torna all'inizio</a>
             </div>
         </div>
