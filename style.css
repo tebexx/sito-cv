@@ -2023,14 +2023,29 @@ button, input, textarea {
         gap: 28px;
     }
 
-    /* Tall enough for the longest back-face text (checked against all 4
-       cards, IT+EN) so it never needs the internal scroll on
-       .spec-card-back — a short/empty scrollbar there was cutting off the
-       start of the text on phones. Placed in this later media query (not
-       right after the base .spec-card rule) so it actually wins the
-       cascade instead of being silently overridden by it. */
-    .spec-card {
-        height: 370px;
+    /* Sized per card, not uniformly: text length varies a lot between
+       sections, and a single height tall enough for the longest one
+       ("Contesto"/"Context") left a lot of empty space under the shorter
+       cards. Each value covers the longer of the IT/EN copy for that card
+       (measured) plus a small buffer, so the internal scroll on
+       .spec-card-back is never needed on phones. Placed in this later
+       media query (not right after the base .spec-card rule) so it
+       actually wins the cascade instead of being silently overridden by
+       it. */
+    .spec-card:nth-child(1) {
+        height: 355px;
+    }
+
+    .spec-card:nth-child(2) {
+        height: 290px;
+    }
+
+    .spec-card:nth-child(3) {
+        height: 270px;
+    }
+
+    .spec-card:nth-child(4) {
+        height: 285px;
     }
 
     .journey-item {
