@@ -1656,25 +1656,12 @@ button, input, textarea {
     perspective: 1400px;
 }
 
-/* On narrow screens, swap the 2-column grid for a horizontal swipe
-   carousel — each card takes most of the width (with the next one peeking
-   at the edge as a hint there's more) and scroll-snap settles on one card
-   at a time, so 4 cards read as "swipe through" instead of "scroll a very
-   long modal". */
 @media (max-width: 700px) {
     .spec-cards {
-        display: flex;
-        grid-template-columns: none;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 16px;
-        padding-bottom: 6px;
-        -webkit-overflow-scrolling: touch;
+        grid-template-columns: 1fr;
     }
     .spec-card {
-        flex: 0 0 85%;
         height: 200px;
-        scroll-snap-align: center;
     }
 }
 
@@ -2018,42 +2005,17 @@ button, input, textarea {
         grid-template-columns: 1fr;
     }
     
-    /* Same horizontal swipe carousel as .spec-cards (see there for why):
-       one card mostly filling the width, the next peeking at the edge,
-       scroll-snap settling on whichever is centered. */
     .focus-grid {
-        display: flex;
-        grid-template-columns: none;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 16px;
-        padding-bottom: 6px;
-        -webkit-overflow-scrolling: touch;
+        grid-template-columns: 1fr;
     }
 
     .focus-card {
-        flex: 0 0 85%;
         padding: 28px 22px;
-        scroll-snap-align: center;
     }
 
     .skills-groups {
         grid-template-columns: 1fr;
         gap: 28px;
-    }
-
-    /* One line per category instead of wrapping to 2-3 — scrolls
-       sideways, so a long tag list doesn't add page height. */
-    .skills-tags {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .skills-tags span {
-        flex: 0 0 auto;
-        white-space: nowrap;
     }
 
     .journey-item {
